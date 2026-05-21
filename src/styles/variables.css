@@ -1,0 +1,24 @@
+:root {
+  /* Colors */
+  --color-primary: #ce0a86;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-light-gray: #bcc1ca;
+
+  --color-input-bg: #f3f4f6;
+
+  --color-apple-bg-button: #fef0f9;
+  --color-google-bg-button: #fdf2f2;
+  --color-google-text-button: #de3b40;
+  --color-facebook-bg-button: #f1f8fd;
+  --color-facebook-text-button: #379ae6;
+
+  --color-text-separator: #9095a0;
+
+  /* Typography */
+  --font-family-base: "Source Sans 3", sans-serif;
+
+  /* Border-radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
