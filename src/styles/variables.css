@@ -4,10 +4,12 @@
   --color-white: #ffffff;
   --color-black: #000000;
   --color-light-gray: #bcc1ca;
+  --color-error: #ff0000;
 
   --color-input-bg: #f3f4f6;
 
-  --color-apple-bg-button: #fef0f9;
+  --color-apple-bg-button: #e5e5e5;
+  --color-apple-text-button: #000000;
   --color-google-bg-button: #fdf2f2;
   --color-google-text-button: #de3b40;
   --color-facebook-bg-button: #f1f8fd;

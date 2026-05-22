@@ -43,3 +43,28 @@ button {
   border: none;
   background: none;
 }
+
+input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--color-light-gray);
+  border-radius: var(--radius-sm);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  width: fit-content !important;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  gap: 1rem;
+}
+
+/* Anything with this class will not be displayed on screen */
+.visually-hidden {
+  display: none;
+}
