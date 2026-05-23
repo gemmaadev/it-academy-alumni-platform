@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 0.1875rem solid var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--color-light-gray);
+  border-radius: var(--radius-sm);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  width: fit-content !important;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  gap: 1rem;
+}
+
+/* Anything with this class will not be displayed on screen */
+.visually-hidden {
+  display: none;
+}

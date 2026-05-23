@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/variables.css" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/src/styles/login.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <main class="login-page">
+      <header>
+        <h1 class="login-title">Crea un compte</h1>
+        <p class="login-subtitle">
+          Uneix-te a nosaltres per connectar-te i compartir oportunitats!
+        </p>
+      </header>
+
+      <form class="login-form" aria-label="Formulari de registre">
+        <fieldset>
+          <legend class="visually-hidden">Personal information</legend>
+          <div class="form-field">
+            <div class="input-wrapper">
+              <label for="first-name" class="visually-hidden"
+                >Posa el teu nom</label
+              >
+              <img src="/icon-user.svg" alt="" />
+              <input
+                type="text"
+                id="first-name"
+                name="firstName"
+                placeholder="Posa el teu nom"
+                aria-describedby="first-name-error"
+                required
+              />
+            </div>
+            <span id="first-name-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <div class="input-wrapper">
+              <label for="last-name" class="visually-hidden"
+                >Posa el teu cognom</label
+              >
+              <img src="/icon-user.svg" alt="" />
+              <input
+                type="text"
+                id="last-name"
+                name="lastName"
+                placeholder="Posa el teu cognom"
+                aria-describedby="last-name-error"
+                required
+              />
+            </div>
+            <span id="last-name-error" role="alert"></span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="visually-hidden">Access data</legend>
+          <div class="form-field">
+            <div class="input-wrapper">
+              <label for="email" class="visually-hidden"
+                >El teu correu electrònic</label
+              >
+              <img src="/icon-email.svg" alt="" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="El teu correu electrònic"
+                aria-describedby="email-error"
+                required
+              />
+            </div>
+            <span id="email-error" role="alert"></span>
+          </div>
+
+          <div class="form-field">
+            <div class="input-wrapper">
+              <label for="password" class="visually-hidden"
+                >Crea una contrasenya</label
+              >
+              <img src="/icon-password.svg" alt="" />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Crea una contrasenya"
+                aria-describedby="password-error"
+                required
+              />
+            </div>
+            <span id="password-error" role="alert"></span>
+          </div>
+        </fieldset>
+
+        <div class="terms-and-conditions-checkbox">
+          <input
+            type="checkbox"
+            id="terms"
+            name="terms-checkbox"
+            value="accepted"
+            required
+          />
+          <label for="terms">Accepto els Termes i Condicions</label>
+        </div>
+
+        <button type="submit" class="login-button">Registra't</button>
+      </form>
+
+      <div class="separator">
+        <span class="separator-line"></span>
+        <span class="separator-text">O</span>
+        <span class="separator-line"></span>
+      </div>
+
+      <div class="social-login">
+        <button type="button" class="social-btn apple">
+          <img src="/icon-apple.svg" alt="" />
+          Continua amb Apple
+        </button>
+
+        <button type="button" class="social-btn google">
+          <img src="/icon-google.svg" alt="" />
+          Continua amb Google
+        </button>
+        <button type="button" class="social-btn facebook">
+          <img src="/icon-facebook.svg" alt="" />
+          Continua amb Facebook
+        </button>
+      </div>
+
+      <footer class="login-footer">
+        <p>
+          <span class="footer-text">Ja t'has registrat?</span>
+          <a class="footer-link" href="#">Inicia sessió</a>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
