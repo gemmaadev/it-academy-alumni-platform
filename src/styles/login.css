@@ -5,11 +5,15 @@
   padding: 1.5rem;
 }
 
-#login-title {
+.login-title {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 400;
   color: var(--color-black);
+}
+
+.login-subtitle {
+  display: none;
 }
 
 .login-form {
@@ -112,4 +116,35 @@
 .login-footer p {
   display: flex;
   gap: 2rem;
+}
+
+/* TODO: Acabar de revisar media queries */
+
+/* Tablet i desktop*/
+@media (width >= 768px) {
+  .login-subtitle {
+    display: block;
+    text-align: center;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110vh;
+    background-image: url("/login-bg.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .login-page {
+    max-width: 43.75rem;
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 2rem 5rem;
+  }
+
+  .login-footer p {
+    padding-left: 7rem;
+  }
 }
