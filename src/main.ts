@@ -16,7 +16,7 @@ window.pageSetups = {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
-  console.log("✓ App iniciada - Router listo");
+  console.log("App started - Router ready");
   initRouter();
 });
 

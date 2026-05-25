@@ -89,7 +89,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
 
   // Check if the container exists
   if (!appContainer) {
-    console.error("Error: No se encontró el elemento #app");
+    console.error("Error: Element #app not found");
     return;
   }
 
@@ -106,7 +106,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
       appContainer.innerHTML = `
         <main>
           <h2>Error 404</h2>
-          <p>No se pudo cargar la página: ${filePath}</p>
+          <p>Could not load page: ${filePath}</p>
         </main>
       `;
       return;
@@ -123,14 +123,14 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     // Execute the page setup if it exists
     if (route.script && window.pageSetups && window.pageSetups[route.script]) {
       window.pageSetups[route.script]();
-      console.log(`✓ Setup de ${route.script} ejecutado`);
+      console.log(`Setup of ${route.script} executed`);
     }
   } catch (error) {
-    console.error("Error al cargar la página:", error);
+    console.error("Error loading the page:", error);
     appContainer.innerHTML = `
       <main>
-        <h2>Error al cargar</h2>
-        <p>Hubo un problema cargando la página.</p>
+        <h2>Error loading</h2>
+        <p>There was a problem loading the page.</p>
       </main>
     `;
   }
@@ -148,14 +148,14 @@ export async function navigate(
   const route = findRoute(path);
 
   if (!route) {
-    console.warn(`Ruta no encontrada: ${path}`);
+    console.warn(`Route not found: ${path}`);
     const appContainer = document.getElementById("app");
     if (appContainer) {
       appContainer.innerHTML = `
         <main>
-          <h2>404 - Página no encontrada</h2>
-          <p>La ruta ${path} no existe en la aplicación.</p>
-          <a href="/">Volver al inicio</a>
+          <h2>404 - Page not found</h2>
+          <p>The route ${path} does not exist in the application.</p>
+          <a href="/">Go back to home</a>
         </main>
       `;
     }
@@ -173,12 +173,7 @@ export async function navigate(
   await loadPage(route.file, route);
 }
 
-/**
- * Initialize the router
- * - Detect internal link clicks
- * - Handle browser back/forward buttons
- * - Load the initial page
- */
+//Initialize the router
 export function initRouter(): void {
   // Event 1: Browser navigation (back/forward)
   window.addEventListener("popstate", () => {
@@ -201,10 +196,6 @@ export function initRouter(): void {
     if (!href) return;
 
     // Don't intercept if:
-    // - It's an external link (starts with http)
-    // - It's a hash (#)
-    // - It has a target attribute (opens in new tab)
-    // - It has a download attribute
     const isExternal = href.startsWith("http");
     const isHash = href.startsWith("#");
     const hasTarget = link.hasAttribute("target");
