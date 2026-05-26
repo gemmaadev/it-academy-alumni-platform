@@ -15,8 +15,33 @@ window.pageSetups = {
   events: setupEventsPage,
 };
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   console.log("App started - Router ready");
+
+  // Load bottom nav
+  if (window.location.pathname !== "/login") {
+    const bottomNavContainer = document.getElementById("bottom-nav");
+    if (bottomNavContainer) {
+      const response = await fetch("/src/components/bottom-nav.html");
+      const html = await response.text();
+      bottomNavContainer.innerHTML = html;
+    }
+
+    const headerContainer = document.getElementById("header");
+    if (headerContainer) {
+      const response = await fetch("/src/components/header.html");
+      const html = await response.text();
+      headerContainer.innerHTML = html;
+    }
+
+    const footerContainer = document.getElementById("footer-pc");
+    if (footerContainer) {
+      const response = await fetch("/src/components/footer.html");
+      const html = await response.text();
+      footerContainer.innerHTML = html;
+    }
+  }
+
   initRouter();
 });
 

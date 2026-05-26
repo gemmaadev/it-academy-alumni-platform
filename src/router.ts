@@ -3,9 +3,7 @@ import type { Route } from "./types/router.types";
 const ROUTES: Route[] = [
   {
     path: "/",
-    file: "/src/pages/login.html",
-    css: ["/src/styles/login.css"],
-    script: "login",
+    redirect: "/login", //TODO: Canviar a lo que toqui
   },
   {
     path: "/login",
@@ -159,6 +157,17 @@ export async function navigate(
         </main>
       `;
     }
+    return;
+  }
+
+  // Handle redirects
+  if (route.redirect) {
+    navigate(route.redirect, replace);
+    return;
+  }
+
+  // If no file, don't load anything
+  if (!route.file) {
     return;
   }
 

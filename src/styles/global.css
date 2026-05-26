@@ -73,3 +73,19 @@ fieldset {
 .visually-hidden {
   display: none;
 }
+
+.only-mobile {
+  display: flex;
+}
+.only-desk {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .only-mobile {
+    display: none;
+  }
+  .only-desk {
+    display: flex;
+  }
+}

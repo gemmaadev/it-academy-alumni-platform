@@ -1,8 +1,9 @@
 export interface Route {
   path: string;
-  file: string;
+  file?: string;
   css?: string[];
   script?: string;
+  redirect?: string;
 }
 
 export interface PageSetups {
