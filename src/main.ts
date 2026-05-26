@@ -16,7 +16,7 @@ window.pageSetups = {
 window.addEventListener("DOMContentLoaded", async () => {
   console.log("App started - Router ready");
 
-  // Load bottom nav
+  // Load bottom nav mobile
   if (window.location.pathname !== "/login") {
     const bottomNavContainer = document.getElementById("bottom-nav");
     if (bottomNavContainer) {
@@ -25,6 +25,8 @@ window.addEventListener("DOMContentLoaded", async () => {
       bottomNavContainer.innerHTML = html;
     }
   }
+
+  // Load header
   const headerContainer = document.getElementById("header");
   if (headerContainer) {
     const response = await fetch("/src/components/header.html");
@@ -32,11 +34,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     headerContainer.innerHTML = html;
   }
 
-  const footerContainer = document.getElementById("footer-pc");
-  if (footerContainer) {
-    const response = await fetch("/src/components/footer-pc.html");
-    const html = await response.text();
-    footerContainer.innerHTML = html;
+  // Load footer pc
+  if (window.location.pathname !== "/login") {
+    const footerContainer = document.getElementById("footer-pc");
+    if (footerContainer) {
+      const response = await fetch("/src/components/footer.html");
+      const html = await response.text();
+      footerContainer.innerHTML = html;
+    }
   }
 
   initRouter();

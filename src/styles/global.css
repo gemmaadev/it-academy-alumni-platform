@@ -49,7 +49,8 @@ button {
   background: none;
 }
 
-input {
+input,
+select {
   width: 100%;
   border: none;
   background: transparent;
@@ -88,4 +89,14 @@ fieldset {
   .only-desk {
     display: flex;
   }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1;
 }

@@ -1,11 +1,14 @@
 <footer class="footer-desk">
   <form class="footer-form">
-    <h2 class="footer-form-title">No et perdis res, subscriu-te!</h2>
+    <h2 class="footer-form-title">"No et perdis res, subscriu-te!"</h2>
     <label for="input-email" class="visually-hidden">El teu email</label>
     <div class="email-wrapper">
-      <input type="email" id="input-email" placeholder="El teu email" />
-      <button class="footer-btn">Subscriu-te</button>
-    </div> 
+      <div class="icon-and-placeholder">
+        <img src="/icon-mail.svg" alt="" />
+        <input type="email" id="input-email" placeholder="El teu email" />
+      </div>
+      <button class="form-btn">Subscriu-te</button>
+    </div>
   </form>
 
   <div class="logo-and-menu-container">
@@ -47,9 +50,12 @@
       </select>
     </div>
 
-    <small id="footer-copyright"
-      >© 2024 Brand, Inc. • Privadesa • Termes d'ús • Mapa del lloc</small
-    >
+    <small id="footer-copyright">
+      © 2024 Brand, Inc. •
+      <a href="#" class="footer-menu-link">Privadesa</a> •
+      <a href="#" class="footer-menu-link">Termes d'ús</a> •
+      <a href="#" class="footer-menu-link">Mapa del lloc</a>
+    </small>
 
     <div class="footer-social">
       <a href="https://www.facebook.com/" aria-label="Segueix-nos a Facebook"
