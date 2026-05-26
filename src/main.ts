@@ -3,7 +3,6 @@ import { setupLoginPage } from "./services/login";
 import { setupHomePage } from "./services/home";
 import { setupNetworkingPage } from "./services/networking";
 import { setupJobOpportunitiesPage } from "./services/job-opportunities";
-import { setupEventsPage } from "./services/events";
 
 // Register the setups for each page
 // The router will automatically call them when you navigate
@@ -12,7 +11,6 @@ window.pageSetups = {
   home: setupHomePage,
   networking: setupNetworkingPage,
   "job-opportunities": setupJobOpportunitiesPage,
-  events: setupEventsPage,
 };
 
 window.addEventListener("DOMContentLoaded", async () => {
@@ -26,20 +24,19 @@ window.addEventListener("DOMContentLoaded", async () => {
       const html = await response.text();
       bottomNavContainer.innerHTML = html;
     }
+  }
+  const headerContainer = document.getElementById("header");
+  if (headerContainer) {
+    const response = await fetch("/src/components/header.html");
+    const html = await response.text();
+    headerContainer.innerHTML = html;
+  }
 
-    const headerContainer = document.getElementById("header");
-    if (headerContainer) {
-      const response = await fetch("/src/components/header.html");
-      const html = await response.text();
-      headerContainer.innerHTML = html;
-    }
-
-    const footerContainer = document.getElementById("footer-pc");
-    if (footerContainer) {
-      const response = await fetch("/src/components/footer.html");
-      const html = await response.text();
-      footerContainer.innerHTML = html;
-    }
+  const footerContainer = document.getElementById("footer-pc");
+  if (footerContainer) {
+    const response = await fetch("/src/components/footer-pc.html");
+    const html = await response.text();
+    footerContainer.innerHTML = html;
   }
 
   initRouter();

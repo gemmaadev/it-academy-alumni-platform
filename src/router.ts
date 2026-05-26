@@ -29,12 +29,6 @@ const ROUTES: Route[] = [
     css: ["/src/styles/job-opportunities.css"],
     script: "job-opportunities",
   },
-  {
-    path: "/events",
-    file: "/src/pages/events.html",
-    css: ["/src/styles/events.css"],
-    script: "events",
-  },
 ];
 
 // Get the current URL path
