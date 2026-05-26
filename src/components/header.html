@@ -1,3 +1,73 @@
-<header class="header">
-  <div></div>
+<header id="header" class="header">
+  <!-- Desktop navigation -->
+  <nav class="header-nav">
+    <div class="logo-and-items-container only-desk">
+      <a href="/" class="header-logo">
+        <!-- TODO: TypeScript ha de canviar el src i l'alt del logo segons la pàgina -->
+        <img src="/logo-xlumni.svg" alt="XLumni" class="logo-img" />
+      </a>
+
+      <ul class="header-menu">
+        <li class="header-menu-item">
+          <a href="/" class="header-menu-link">Inici</a>
+        </li>
+        <li class="header-menu-item">
+          <a href="/networking" class="header-menu-link">Xarxa</a>
+        </li>
+        <li class="header-menu-item">
+          <a href="/job-opportunities" class="header-menu-link"
+            >Oportunitats de feina</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Desktop Home actions -->
+    <div class="header-actions only-desk">
+      <a href="/login" class="header-btn header-btn-primary">
+        <img src="/icon-join-header.svg" alt="" />
+        Apunta't
+      </a>
+      <a href="/login" class="header-btn header-btn-secondary">
+        <img src="/icon-user-header.svg" alt="" />
+        Com et veuen?
+      </a>
+    </div>
+
+    <!-- Desktop Default actions -->
+    <div class="header-icons only-desk">
+      <button type="button" class="header-icon-btn" aria-label="Buscar">
+        <img src="/icon-search.svg" alt="" />
+      </button>
+      <button type="button" class="header-icon-btn" aria-label="Notificacions">
+        <img src="/icon-notifications.svg" alt="" />
+      </button>
+      <button type="button" class="header-icon-btn" aria-label="Configuració">
+        <img src="/icon-settings.svg" alt="" />
+      </button>
+      <a href="#" aria-label="Veure perfil">
+        <img src="/avatar.jpg" alt="" class="avatar" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile header -->
+  <div class="header-mobile only-mobile">
+    <!-- TODO: TypeScript ha de canviar fletxa/no fletxa segons la pàgina -->
+    <button type="button" class="header-back" aria-label="Tornar enrere">
+      <img src="/icon-arrow-left.svg" alt="" />
+    </button>
+
+    <!-- TODO: TypeScript ha de canviar el nom de la pàg segons la pàgina -->
+    <span class="header-title" id="page-title"></span>
+
+    <div class="header-mobile-actions">
+      <button type="button" class="header-icon-btn" aria-label="Estadístiques">
+        <img src="/icon-stats.svg" alt="" />
+      </button>
+      <a href="/profile" aria-label="Veure perfil">
+        <img src="/avatar.jpg" alt="" class="avatar" />
+      </a>
+    </div>
+  </div>
 </header>

@@ -24,18 +24,16 @@ window.addEventListener("DOMContentLoaded", async () => {
       const html = await response.text();
       bottomNavContainer.innerHTML = html;
     }
-  }
 
-  // Load header
-  const headerContainer = document.getElementById("header");
-  if (headerContainer) {
-    const response = await fetch("/src/components/header.html");
-    const html = await response.text();
-    headerContainer.innerHTML = html;
-  }
+    // Load header
+    const headerContainer = document.getElementById("header");
+    if (headerContainer) {
+      const response = await fetch("/src/components/header.html");
+      const html = await response.text();
+      headerContainer.innerHTML = html;
+    }
 
-  // Load footer pc
-  if (window.location.pathname !== "/login") {
+    // Load footer pc
     const footerContainer = document.getElementById("footer-pc");
     if (footerContainer) {
       const response = await fetch("/src/components/footer.html");
@@ -43,7 +41,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       footerContainer.innerHTML = html;
     }
   }
-
+  
   initRouter();
 });
 
