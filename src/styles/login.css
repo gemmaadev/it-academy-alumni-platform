@@ -56,14 +56,6 @@
   align-items: center;
   gap: 0.3rem;
 }
-/* TODO: Investigar si fer una classe global amb primary-button i si es fa amb HTML */
-.login-button {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-radius: var(--radius-md);
-  padding: 0.75rem 1rem;
-  width: 100%;
-}
 
 .separator {
   display: flex;

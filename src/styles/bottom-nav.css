@@ -21,8 +21,7 @@
   color: var(--color-text-navbar);
 }
 
-/* TODO: Quan integri el router amb TypeScript, fer una funció que carregui els SVGs inline automàticament pel canvi de color */
-.item.active a {
+ .item.active a {
   color: var(--color-primary);
 }
 

@@ -1,0 +1,48 @@
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  font-size: 1rem;
+  width: 100%;
+}
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-gradient {
+  background: var(--background-gradient);
+  color: var(--color-white);
+}
+
+.btn-pink {
+  background: var(--color-pink);
+  color: var(--color-primary);
+}
+
+/* HOVER */
+.btn:hover {
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+  opacity: 0.85;
+}
+
+.btn-secondary:hover {
+  border-width: 2px;
+}
+
+.btn-gradient:hover {
+  opacity: 0.85;
+}
