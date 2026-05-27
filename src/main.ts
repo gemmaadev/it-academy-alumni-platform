@@ -16,21 +16,21 @@ window.pageSetups = {
 window.addEventListener("DOMContentLoaded", async () => {
   console.log("App started - Router ready");
 
-  // Load bottom nav mobile
+  // Load header (always)
+  const headerContainer = document.getElementById("header");
+  if (headerContainer) {
+    const response = await fetch("/src/components/header.html");
+    const html = await response.text();
+    headerContainer.innerHTML = html;
+  }
+
+  // Load bottom nav mobile (not on login)
   if (window.location.pathname !== "/login") {
     const bottomNavContainer = document.getElementById("bottom-nav");
     if (bottomNavContainer) {
       const response = await fetch("/src/components/bottom-nav.html");
       const html = await response.text();
       bottomNavContainer.innerHTML = html;
-    }
-
-    // Load header
-    const headerContainer = document.getElementById("header");
-    if (headerContainer) {
-      const response = await fetch("/src/components/header.html");
-      const html = await response.text();
-      headerContainer.innerHTML = html;
     }
 
     // Load footer pc
@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       footerContainer.innerHTML = html;
     }
   }
-  
+
   initRouter();
 });
 

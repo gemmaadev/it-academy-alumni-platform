@@ -1,15 +1,16 @@
 <header id="header" class="header">
   <!-- Desktop navigation -->
-  <nav class="header-nav">
-    <div class="logo-and-items-container only-desk">
-      <a href="/" class="header-logo">
+  <nav class="header-nav only-desk">
+    <div class="logo-and-items-container">
+      <a href="/home" class="header-logo">
         <!-- TODO: TypeScript ha de canviar el src i l'alt del logo segons la pàgina -->
         <img src="/logo-xlumni.svg" alt="XLumni" class="logo-img" />
+        <span class="logo-text hidden">Alumni Connect</span>
       </a>
 
       <ul class="header-menu">
         <li class="header-menu-item">
-          <a href="/" class="header-menu-link">Inici</a>
+          <a href="/home" class="header-menu-link">Inici</a>
         </li>
         <li class="header-menu-item">
           <a href="/networking" class="header-menu-link">Xarxa</a>
@@ -23,7 +24,7 @@
     </div>
 
     <!-- Desktop Home actions -->
-    <div class="header-actions only-desk">
+    <div class="header-actions only-desk hidden">
       <a href="/login" class="header-btn header-btn-primary">
         <img src="/icon-join-header.svg" alt="" />
         Apunta't
@@ -35,7 +36,7 @@
     </div>
 
     <!-- Desktop Default actions -->
-    <div class="header-icons only-desk">
+    <div class="header-icons only-desk hidden">
       <button type="button" class="header-icon-btn" aria-label="Buscar">
         <img src="/icon-search.svg" alt="" />
       </button>
@@ -59,7 +60,7 @@
     </button>
 
     <!-- TODO: TypeScript ha de canviar el nom de la pàg segons la pàgina -->
-    <span class="header-title" id="page-title"></span>
+    <span class="header-title" id="page-title">Title</span>
 
     <div class="header-mobile-actions">
       <button type="button" class="header-icon-btn" aria-label="Estadístiques">

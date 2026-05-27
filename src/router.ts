@@ -1,4 +1,5 @@
 import type { Route } from "./types/router.types";
+import { setupHeader } from "./services/header";
 
 const ROUTES: Route[] = [
   {
@@ -116,6 +117,9 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     if (route.script && window.pageSetups && window.pageSetups[route.script]) {
       window.pageSetups[route.script]();
       console.log(`Setup of ${route.script} executed`);
+
+      // Update header based on current page
+      setupHeader(route.script || "");
     }
   } catch (error) {
     console.error("Error loading the page:", error);

@@ -75,19 +75,23 @@ fieldset {
   display: none;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .only-mobile {
-  display: flex;
+  display: flex !important;
 }
 .only-desk {
-  display: none;
+  display: none !important;
 }
 
 @media (width >= 768px) {
   .only-mobile {
-    display: none;
+    display: none !important;
   }
   .only-desk {
-    display: flex;
+    display: flex !important;
   }
 }
 
