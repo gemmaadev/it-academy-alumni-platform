@@ -119,14 +119,14 @@
     text-align: center;
   }
 
-  body {
+  .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 110vh;
     background-image: url("/login-bg.jpg");
     background-size: cover;
     background-position: center;
+    padding: 2rem;
   }
 
   .login-page {

@@ -1,3 +1,12 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+}
+
+/* HOME MOBILE */
+
 .home-page {
   display: flex;
   flex-direction: column;
@@ -39,4 +48,126 @@
 
 .card-description {
   color: var(--color-text-separator);
+}
+
+/* HOME DESK */
+.home-page-desk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9rem;
+  max-width: 1200px;
+  padding: 6rem 2rem;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 3.5rem;
+}
+
+.home-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+.hero-btn {
+  width: auto;
+  gap: 0.5rem;
+  padding: 0.5rem 3rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+.benefits-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.benefits-title {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.benefits-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.benefit img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.benefit-btn {
+  width: auto;
+  gap: 0.5rem;
+  padding: 0.5rem 3rem;
+}
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.review-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 !important;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.5rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.review-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.2rem;
+}
+
+.reviews-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
