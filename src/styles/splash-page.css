@@ -1,0 +1,33 @@
+.splash-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.splash-logo {
+  width: 350px;
+  height: auto;
+}
+
+.splash-description {
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 380px;
+}
+
+.splash-btn {
+  width: 100%;
+  max-width: 280px;
+}
