@@ -1,14 +1,130 @@
 <!-- HOME DESK -->
+<main class="home-page-desk only-desk">
+  <section class="hero-section">
+    <h1>Benvingut, Alumni</h1>
+    <p>Connectant i empoderant a la nostra comunitat global d’alumnes</p>
+    <div class="home-actions">
+      <a href="/login" class="btn btn-gradient"> Uneix-te </a>
+      <a href="/login" class="btn btn-secondary"> Mira que fem </a>
+    </div>
+    <video
+      class="hero-video"
+      poster="/video-preview-home.jpg"
+      controls
+      aria-label="Vídeo de presentació de XLumni"
+    >
+      <!-- TODO: Afegir src del vídeo quan estigui disponible -->
+      <source src="" type="video/mp4" />
+    </video>
+  </section>
+
+  <section class="benefits-section">
+    <h2>Què guanyes en formar-ne part?</h2>
+    <ul class="benefits-list">
+      <li class="benefit">
+        <img src="/benefit-1.svg" alt="" />
+        <p>
+          Comparteix i no perdis el contacte: Puja els teus moments importants,
+          explica com va tot i queda amb els companys. Una xarxa per estar més a
+          prop.
+        </p>
+        <a href="/login" class="btn btn-gradient">Apunta't ja</a>
+      </li>
+
+      <li class="benefit">
+        <img src="/benefit-2.svg" alt="" />
+        <p>
+          Participa en discussions: Intercanvia coneixements, punts de vista i
+          opinions sobre temes que t'interessen.
+        </p>
+        <a href="/login" class="btn btn-gradient">Apunta't ja</a>
+      </li>
+
+      <li class="benefit">
+        <img src="/benefit-3.svg" alt="" />
+        <p>
+          Xarxa Alumni: Connecta amb companys de promoció, fes noves amistats i
+          crea records per durar tota la vida.
+        </p>
+        <a href="/login" class="btn btn-gradient">Apunta't ja</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="review-section">
+    <h2>"T'ensenyem el que opinen els nostres súper-usuaris!”</h2>
+    <ul class="reviews-list">
+      <li class="review">
+        <img src="/avatar-1.jpg" alt="Avatar de Mikel" class="review-avatar" />
+        <h3>Mikel</h3>
+        <img
+          src="/icon-star-filled.svg"
+          class="review-rating"
+          alt="Valoració: 5 sobre 5 estrelles"
+        />
+        <p>
+          "Gràcies a IT Alumni vaig aconseguir la feina dels meus somnis en el
+          món tech amb el seu increïble programa de mentoria."
+        </p>
+      </li>
+
+      <li class="review">
+        <img src="/avatar-1.jpg" alt="Avatar de Emma" class="review-avatar" />
+        <h3>Emma</h3>
+        <img
+          src="/icon-star-filled.svg"
+          class="review-rating"
+          alt="Valoració: 5 sobre 5 estrelles"
+        />
+        <p>
+          "La meva xarxa d'aquesta comunitat ha estat clau: va revolucionar la
+          meva carrera i em va mostrar camins insospitats."
+        </p>
+      </li>
+
+      <li class="review">
+        <img src="/avatar-1.jpg" alt="Avatar de Laia" class="review-avatar" />
+        <h3>Laia</h3>
+        <img
+          src="/icon-star-filled.svg"
+          class="review-rating"
+          alt="Valoració: 5 sobre 5 estrelles"
+        />
+        <p>
+          "IT Alumni em va donar les eines i l'autoestima per fer realitat el
+          meu somni d'emprendre."
+        </p>
+      </li>
+    </ul>
+
+    <div class="reviews-carousel-controls" aria-label="Controls del carrusel">
+      <button
+        type="button"
+        class="carousel-btn carousel-prev"
+        aria-label="Ressenya anterior"
+      >
+        <img src="/icon-back.svg" alt="" />
+      </button>
+      <button
+        type="button"
+        class="carousel-btn carousel-next"
+        aria-label="Ressenya següent"
+      >
+        <img src="/icon-next.svg" alt="" />
+      </button>
+    </div>
+  </section>
+</main>
 
 <!-- HOME MOBILE -->
-<div class="home-page">
-  <form class="search-wrapper only-mobile">
+<div class="home-page only-mobile">
+  <form class="search-wrapper">
     <label for="search" class="visually-hidden">Cerca alumnes</label>
     <img src="/icon-search.svg" alt="" />
     <input type="search" id="search" placeholder="Search alumni..." />
   </form>
 
-  <section class="home-cards only-mobile">
+  <section class="home-cards">
     <article class="home-card">
       <img src="/temporal-img-card.jpg" alt="Networking" />
       <h2 class="card-title">Networking</h2>

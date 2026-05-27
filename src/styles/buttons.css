@@ -23,11 +23,6 @@
   color: var(--color-white);
 }
 
-.btn-pink {
-  background: var(--color-pink);
-  color: var(--color-primary);
-}
-
 /* HOVER */
 .btn:hover {
   opacity: 0.85;
@@ -44,5 +39,6 @@
 }
 
 .btn-gradient:hover {
-  opacity: 0.85;
+  background: var(--color-pink);
+  color: var(--color-primary);
 }
