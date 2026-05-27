@@ -151,7 +151,7 @@ export async function navigate(
         <main>
           <h2>404 - Page not found</h2>
           <p>The route ${path} does not exist in the application.</p>
-          <a href="/">Go back to home</a>
+          <a href="/home">Go back to home</a>
         </main>
       `;
     }

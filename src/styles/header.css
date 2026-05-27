@@ -74,23 +74,9 @@
 }
 
 .header-btn {
-  display: flex;
-  align-items: center;
+  width: auto;
   gap: 0.5rem;
   padding: 0.5rem 2.5rem;
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-  white-space: nowrap;
-}
-
-.header-btn-primary {
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-.header-btn-secondary {
-  background: var(--background-gradient);
-  color: var(--color-white);
 }
 
 .header-icons {
