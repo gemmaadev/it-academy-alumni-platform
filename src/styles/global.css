@@ -27,6 +27,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 :focus-visible {
@@ -93,12 +96,6 @@ fieldset {
   .only-desk {
     display: flex !important;
   }
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 #app {
