@@ -1,0 +1,116 @@
+.footer-desk {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 3rem 7rem;
+  background-color: var(--color-footer-bg);
+}
+
+.footer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.footer-form-title {
+  color: var(--color-white);
+  font-size: 1.2rem;
+}
+
+.email-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon-and-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 2rem 0 0 2rem;
+  padding: 0.75rem 5rem 0.75rem 0.75rem;
+}
+
+.form-btn {
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  background: var(--background-gradient);
+  border: 1px solid var(--background-gradient);
+  border-radius: 0 2rem 2rem 0;
+  height: 100%;
+}
+
+.email-wrapper:focus-within .icon-and-placeholder {
+  border-color: var(--color-primary);
+}
+
+.email-wrapper input:focus-visible {
+  outline: none;
+}
+
+.logo-and-menu-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-menu-link {
+  color: var(--color-white);
+}
+
+.footer-menu-link:hover {
+  color: var(--color-primary);
+}
+
+.separator-line {
+  display: block;
+  height: 1px;
+  background-color: var(--color-light-gray);
+}
+
+.language-and-social-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+#language-select {
+  border: 1px solid var(--color-light-gray);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 4rem 0.5rem 1rem;
+  color: var(--color-white);
+  width: auto;
+  appearance: none;
+  background-image: url("/icon-chevron-down.svg");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+}
+
+#footer-copyright {
+  color: var(--color-white);
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.social-logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}

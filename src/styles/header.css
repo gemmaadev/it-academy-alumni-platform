@@ -1,0 +1,174 @@
+/* Desktop navigation */
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+}
+
+.logo-and-items-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8rem;
+}
+
+.header-logo {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-logo img {
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.header-logo img.logo-home {
+  height: 3rem;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 450;
+  color: var(--color-black);
+}
+
+.header-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.header-menu-link {
+  color: var(--color-text-navbar);
+  font-size: 1rem;
+}
+
+.header-menu-link:hover {
+  color: var(--color-primary);
+}
+
+.header-menu-link.active {
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px 2px 2px 2px;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-actions.hidden {
+  display: none !important;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 2.5rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.header-btn-primary {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.header-btn-secondary {
+  background: var(--background-gradient);
+  color: var(--color-white);
+}
+
+.header-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icons.hidden {
+  display: none !important;
+}
+
+.header-icon-btn {
+  padding: 0.25rem;
+}
+
+.header-nav .avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Mobile header */
+
+.header-mobile {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.header-back {
+  display: none;
+  height: 2.5rem;
+  width: 3rem;
+}
+
+.header-title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  grid-column-start: 2;
+  font-size: 1.7rem;
+}
+
+.header-mobile-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.header-mobile .header-icon-btn img {
+  width: 3rem;
+  height: 3.5rem;
+}
+
+.header-mobile .avatar {
+  height: 3rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (width < 1024px) {
+  .header-menu {
+    gap: 1rem;
+  }
+
+  .header-nav {
+    padding: 1rem;
+  }
+
+  .header-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}

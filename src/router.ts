@@ -1,11 +1,10 @@
 import type { Route } from "./types/router.types";
+import { setupHeader } from "./services/header";
 
 const ROUTES: Route[] = [
   {
     path: "/",
-    file: "/src/pages/login.html",
-    css: ["/src/styles/login.css"],
-    script: "login",
+    redirect: "/login", //TODO: Canviar a lo que toqui
   },
   {
     path: "/login",
@@ -30,12 +29,6 @@ const ROUTES: Route[] = [
     file: "/src/pages/job-opportunities.html",
     css: ["/src/styles/job-opportunities.css"],
     script: "job-opportunities",
-  },
-  {
-    path: "/events",
-    file: "/src/pages/events.html",
-    css: ["/src/styles/events.css"],
-    script: "events",
   },
 ];
 
@@ -124,6 +117,9 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     if (route.script && window.pageSetups && window.pageSetups[route.script]) {
       window.pageSetups[route.script]();
       console.log(`Setup of ${route.script} executed`);
+
+      // Update header based on current page
+      setupHeader(route.script || "");
     }
   } catch (error) {
     console.error("Error loading the page:", error);
@@ -159,6 +155,17 @@ export async function navigate(
         </main>
       `;
     }
+    return;
+  }
+
+  // Handle redirects
+  if (route.redirect) {
+    navigate(route.redirect, replace);
+    return;
+  }
+
+  // If no file, don't load anything
+  if (!route.file) {
     return;
   }
 

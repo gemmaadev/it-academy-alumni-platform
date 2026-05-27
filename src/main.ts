@@ -3,7 +3,6 @@ import { setupLoginPage } from "./services/login";
 import { setupHomePage } from "./services/home";
 import { setupNetworkingPage } from "./services/networking";
 import { setupJobOpportunitiesPage } from "./services/job-opportunities";
-import { setupEventsPage } from "./services/events";
 
 // Register the setups for each page
 // The router will automatically call them when you navigate
@@ -12,11 +11,37 @@ window.pageSetups = {
   home: setupHomePage,
   networking: setupNetworkingPage,
   "job-opportunities": setupJobOpportunitiesPage,
-  events: setupEventsPage,
 };
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   console.log("App started - Router ready");
+
+  // Load header (always)
+  const headerContainer = document.getElementById("header");
+  if (headerContainer) {
+    const response = await fetch("/src/components/header.html");
+    const html = await response.text();
+    headerContainer.innerHTML = html;
+  }
+
+  // Load bottom nav mobile (not on login)
+  if (window.location.pathname !== "/login") {
+    const bottomNavContainer = document.getElementById("bottom-nav");
+    if (bottomNavContainer) {
+      const response = await fetch("/src/components/bottom-nav.html");
+      const html = await response.text();
+      bottomNavContainer.innerHTML = html;
+    }
+
+    // Load footer pc
+    const footerContainer = document.getElementById("footer-pc");
+    if (footerContainer) {
+      const response = await fetch("/src/components/footer.html");
+      const html = await response.text();
+      footerContainer.innerHTML = html;
+    }
+  }
+
   initRouter();
 });
 

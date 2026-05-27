@@ -1,1 +1,5 @@
-export function setupNetworkingPage() {}
+import { setupHeader } from "./header";
+
+export function setupNetworkingPage() {
+  setupHeader("networking");
+}

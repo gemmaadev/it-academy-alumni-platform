@@ -38,13 +38,19 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 button {
   cursor: pointer;
   border: none;
   background: none;
 }
 
-input {
+input,
+select {
   width: 100%;
   border: none;
   background: transparent;
@@ -67,4 +73,34 @@ fieldset {
 /* Anything with this class will not be displayed on screen */
 .visually-hidden {
   display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.only-mobile {
+  display: flex !important;
+}
+.only-desk {
+  display: none !important;
+}
+
+@media (width >= 768px) {
+  .only-mobile {
+    display: none !important;
+  }
+  .only-desk {
+    display: flex !important;
+  }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  flex: 1;
 }
