@@ -3,6 +3,7 @@ import { setupLoginPage } from "./services/login";
 import { setupHomePage } from "./services/home";
 import { setupNetworkingPage } from "./services/networking";
 import { setupJobOpportunitiesPage } from "./services/job-opportunities";
+import { setupSplashPage } from "./services/splash-page";
 
 // Register the setups for each page
 // The router will automatically call them when you navigate
@@ -11,21 +12,26 @@ window.pageSetups = {
   home: setupHomePage,
   networking: setupNetworkingPage,
   "job-opportunities": setupJobOpportunitiesPage,
+  "splash-page": setupSplashPage,
 };
 
 window.addEventListener("DOMContentLoaded", async () => {
   console.log("App started - Router ready");
 
-  // Load header (always)
-  const headerContainer = document.getElementById("header");
-  if (headerContainer) {
-    const response = await fetch("/src/components/header.html");
-    const html = await response.text();
-    headerContainer.innerHTML = html;
+  const currentPath = window.location.pathname;
+
+  // Load header (not on login or splash-page)
+  if (currentPath !== "/login" && currentPath !== "/splash-page") {
+    const headerContainer = document.getElementById("header");
+    if (headerContainer) {
+      const response = await fetch("/src/components/header.html");
+      const html = await response.text();
+      headerContainer.innerHTML = html;
+    }
   }
 
-  // Load bottom nav mobile (not on login)
-  if (window.location.pathname !== "/login") {
+  // Load bottom nav mobile and footer (not on login or splash-page)
+  if (currentPath !== "/login" && currentPath !== "/splash-page") {
     const bottomNavContainer = document.getElementById("bottom-nav");
     if (bottomNavContainer) {
       const response = await fetch("/src/components/bottom-nav.html");
@@ -40,6 +46,20 @@ window.addEventListener("DOMContentLoaded", async () => {
       const html = await response.text();
       footerContainer.innerHTML = html;
     }
+  }
+
+  const isMobile = window.innerWidth < 768;
+
+  // Redirect based on device type
+  if (window.location.pathname === "/") {
+    window.location.replace(isMobile ? "/splash-page" : "/home");
+    return;
+  }
+
+  // Redirect desktop users away from splash page
+  if (!isMobile && window.location.pathname === "/splash-page") {
+    window.location.replace("/home");
+    return;
   }
 
   initRouter();
