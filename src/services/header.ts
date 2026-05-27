@@ -42,7 +42,9 @@ export function setupHeader(page: string): void {
   }
 
   // Show/hide desktop actions (buttons on home vs icons on other pages)
-  const headerActions = document.querySelector(".header-actions") as HTMLElement;
+  const headerActions = document.querySelector(
+    ".header-actions",
+  ) as HTMLElement;
   const headerIcons = document.querySelector(".header-icons") as HTMLElement;
 
   if (headerActions && headerIcons) {
@@ -51,9 +53,15 @@ export function setupHeader(page: string): void {
   }
 
   // Show/hide mobile back button
-  const backBtn = document.querySelector(".header-back") as HTMLElement;
+  const backBtn = document.querySelector(".header-back") as HTMLButtonElement;
   if (backBtn) {
-    backBtn.style.display = config.isHomePage ? "none" : "flex";
+    if (config.isHomePage) {
+      backBtn.style.display = "none";
+    } else {
+      backBtn.style.display = "flex";
+      // Add click handler for back button
+      backBtn.onclick = () => window.history.back();
+    }
   }
 
   // Update mobile page title
