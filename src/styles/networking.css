@@ -1,0 +1,167 @@
+/* MOBILE */
+
+.networking-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.networking-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+}
+
+.search-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.filters {
+  display: none;
+}
+
+.browse-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.alumni-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.alumni-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid var(--color-input-bg);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.alumni-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.alumni-card__name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-black);
+}
+
+.alumni-card__role,
+.alumni-card__location {
+  font-size: 0.875rem;
+  color: var(--color-text-navbar);
+}
+
+.alumni-card__photo {
+  width: 6rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-input-bg);
+  flex-shrink: 0;
+}
+
+/* --- States --- */
+.loading-state,
+.error-state,
+.empty-state {
+  font-size: 0.9rem;
+  color: var(--color-text-navbar);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.error-state {
+  color: var(--color-error);
+}
+
+/* MEDIA QUERIES > TABLET AND DESK */
+@media (width >= 768px) {
+  .networking-page {
+    padding: 4rem 4rem;
+  }
+
+  .networking-toolbar {
+    justify-content: space-between;
+  }
+
+  .search-wrapper {
+    max-width: 25rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+  }
+
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .filters-label {
+    font-size: 0.9rem;
+  }
+
+  .filter-btn {
+    font-size: 0.9rem;
+    color: var(--color-text-navbar);
+    padding: 0.375rem 0.75rem;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+  }
+
+  .filter-btn:hover {
+    color: var(--color-black);
+  }
+
+  .filter-btn--active {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+    font-weight: 700;
+    border-radius: 4px 2px 2px 2px;
+  }
+
+  .alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .alumni-card {
+    flex-direction: column;
+  }
+
+  .alumni-card__photo {
+    display: none;
+  }
+}
+
+/* Networking extra DESK (recent activity + suggestions)*/
+.networking-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.networking-extra h2 {
+  font-size: 1rem;
+  font-weight: 450;
+}
+
+.networking-extra li {
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
+}
