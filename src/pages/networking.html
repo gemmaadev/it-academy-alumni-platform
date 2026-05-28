@@ -1,3 +1,84 @@
 <main class="networking-page">
-  <h1>Networking</h1>
+  <!-- Always visible -->
+  <div class="networking-toolbar">
+    <!-- search inline, do not navigate -->
+    <form class="search-wrapper" role="search">
+      <label for="alumni-search" class="visually-hidden">Cerca alumnes</label>
+      <img src="/icon-search.svg" alt="" />
+      <input
+        type="search"
+        id="alumni-search"
+        placeholder="Search alumni..."
+        autocomplete="off"
+      />
+    </form>
+
+    <!-- filters: hidden on mobile, visible on desktop -->
+    <div class="filters" role="group" aria-label="Filtres de visualització">
+      <span class="filters-label" aria-hidden="true">Filters:</span>
+      <button
+        type="button"
+        aria-pressed="false"
+        class="filter-btn"
+        data-filter="recent"
+      >
+        Recent Activity
+      </button>
+      <button
+        type="button"
+        aria-pressed="true"
+        class="filter-btn filter-btn--active"
+        data-filter="popular"
+      >
+        Popular
+      </button>
+      <button
+        type="button"
+        aria-pressed="false"
+        class="filter-btn"
+        data-filter="connected"
+      >
+        Most Connected
+      </button>
+    </div>
+  </div>
+
+  <!-- STATUS A: active search > appears, browse-view disappears -->
+  <section
+    class="search-results"
+    aria-label="Resultats de cerca"
+    aria-live="polite"
+    hidden
+  >
+    <ul id="search-results-list" class="alumni-list"></ul>
+    <p id="search-empty" class="empty-state" hidden>No s'han trobat alumnes.</p>
+  </section>
+
+  <!-- STATE B: normal navigation > disappears when search is active -->
+  <div class="browse-view">
+    <!-- grid: 1 col mobile (horizontal card + photo), 4 col desk (no photo) -->
+    <section
+      aria-labelledby="alumni-heading"
+      aria-live="polite"
+      aria-busy="false"
+    >
+      <h2 id="alumni-heading" class="visually-hidden">Alumnes</h2>
+      <ul id="alumni-grid" class="alumni-grid"></ul>
+      <p id="alumni-loading" class="loading-state" hidden>Carregant...</p>
+      <p id="alumni-error" class="error-state" hidden>Error carregant dades.</p>
+    </section>
+
+    <!-- Recent Activity + Suggestions: only-desk -->
+    <div class="networking-extra only-desk">
+      <section aria-labelledby="recent-activity-heading">
+        <h2 id="recent-activity-heading">Recent Activity</h2>
+        <ul id="recent-activity-list"></ul>
+      </section>
+
+      <section aria-labelledby="suggestions-heading">
+        <h2 id="suggestions-heading">Suggestions for You</h2>
+        <ul id="suggestions-list"></ul>
+      </section>
+    </div>
+  </div>
 </main>
