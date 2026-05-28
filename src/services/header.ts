@@ -9,16 +9,17 @@ const PAGE_CONFIGS: { [key: string]: PageHeaderConfig } = {
   "job-opportunities": { title: "Job Portal", isHomePage: false },
   events: { title: "Eventos", isHomePage: false },
   login: { title: "Login", isHomePage: false },
+  "splash-page": { title: "", isHomePage: false },
 };
 
 export function setupHeader(page: string): void {
   const config = PAGE_CONFIGS[page];
   if (!config) return;
 
-  // Hide header on login
+  // Hide header on login and splash-page
   const header = document.getElementById("header");
   if (header) {
-    header.style.display = page === "login" ? "none" : "block";
+    header.style.display = (page === "login" || page === "splash-page") ? "none" : "block";
   }
 
   // Show/hide logo text (Alumni Connect) - only on non-home pages

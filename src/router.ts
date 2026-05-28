@@ -3,8 +3,10 @@ import { setupHeader } from "./services/header";
 
 const ROUTES: Route[] = [
   {
-    path: "/",
-    redirect: "/login", //TODO: Canviar a lo que toqui
+    path: "/splash-page",
+    file: "/src/pages/splash-page.html",
+    css: ["/src/styles/splash-page.css"],
+    script: "splash-page",
   },
   {
     path: "/login",
