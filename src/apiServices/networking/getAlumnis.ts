@@ -1,10 +1,11 @@
 import type { Alumni } from "../../types/alumni";
-import { renderError } from "../../logic/networking";
 
 const API_URL =
   "https://my-json-server.typicode.com/gemmaadev/it-academy-alumni-api/alumni";
 
-export const getAlumnis = async (): Promise<Alumni[]> => {
+export const getAlumnis = async (
+  onError: (error: Error | unknown) => void,
+): Promise<Alumni[]> => {
   try {
     const response = await fetch(API_URL);
     console.log(response);
@@ -16,7 +17,7 @@ export const getAlumnis = async (): Promise<Alumni[]> => {
     return alumni;
   } catch (error: Error | unknown) {
     console.error("Error fetching alumni:", error);
-    renderError(error);
+    onError(error);
     throw error;
   }
 };
