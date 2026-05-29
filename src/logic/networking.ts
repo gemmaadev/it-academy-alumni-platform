@@ -5,14 +5,27 @@ import type { Alumni } from "../types/alumni";
 import type { Activity } from "../types/activity";
 import { getActivity } from "../apiServices/networking/getActivity";
 
+let allAlumnis: Alumni[] = [];
+
 // ───────────── RENDER FUNCTIONS (defineix com mostrar les dades) ──────────────────────
+function filterAlumnis(query: string): Alumni[] {
+  return allAlumnis.filter((alumni) =>
+    `${alumni.firstName} ${alumni.lastName} ${alumni.position} ${alumni.location}`
+      .toLowerCase()
+      .includes(query.toLowerCase()),
+  );
+}
 
 function renderAlumni(alumnis: Alumni[]): void {
   const grid = document.getElementById("alumni-grid");
   if (!grid) return;
 
+  // Amaga l'empty state sempre que es renderitza
+  document.getElementById("alumni-empty")?.setAttribute("hidden", "");
+
   if (alumnis.length === 0) {
     document.getElementById("alumni-empty")?.removeAttribute("hidden");
+    grid.innerHTML = "";
     return;
   }
 
@@ -26,7 +39,7 @@ function renderAlumni(alumnis: Alumni[]): void {
        <p class="alumni-card-role">${alumni.position} at ${alumni.company}</p>
       <p class="alumni-card-location only-desk">${alumni.location}</p>
       </div>
-      <img   src="https://ui-avatars.com/api/?name=${alumni.firstName}+${alumni.lastName}&background=ce0a86&color=fff&size=128&bold=true"
+      <img src="https://ui-avatars.com/api/?name=${alumni.firstName}+${alumni.lastName}&background=ce0a86&color=fff&size=128&bold=true"
   alt="${alumni.firstName} ${alumni.lastName}"
   class="alumni-card-photo only-mobile"/>
       <button type="button" class="btn btn-primary btn-networking only-desk">Message</button>
@@ -94,6 +107,17 @@ export function renderError(
   errorElement.removeAttribute("hidden");
 }
 
+function setupSearch(): void {
+  const input = document.getElementById("alumni-search") as HTMLInputElement;
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+    const query = input.value;
+    const filteredAlumnis = filterAlumnis(query);
+    renderAlumni(filteredAlumnis);
+  });
+}
+
 // ───────────── DATA FETCHING (obté les dades i crida les render functions) ──────────────────────
 
 const getAllAlumnisAndRender = async () => {
@@ -110,6 +134,7 @@ const getAllAlumnisAndRender = async () => {
     const alumnis = await getAlumnis((error) =>
       renderError(error, "alumni-error"),
     );
+    allAlumnis = alumnis;
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // success
     renderAlumni(alumnis);
@@ -183,4 +208,5 @@ export async function setupNetworkingPage(): Promise<void> {
   await getAllAlumnisAndRender();
   await getAllActivityAndRender();
   await getAllSuggestionsAndRender();
+  setupSearch();
 }
