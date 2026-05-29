@@ -20,12 +20,16 @@ function renderAlumni(alumnis: Alumni[]): void {
     ?.map(
       (alumni) => `
     <li class="alumni-card">
-      <h3>${alumni.firstName} ${alumni.lastName}</h3>
+    <div class="alumni-card-info">
+      <h3 class="alumni-card-name">${alumni.firstName} ${alumni.lastName}</h3>
       <p class="only-mobile"> Class of ${alumni.classOf}</p>
-      <p>${alumni.position} at ${alumni.company}</p>
-      <p class="only-desk">${alumni.location}</p>
-      <img src="${alumni.avatar}" class="only-mobile" alt="${alumni.firstName} ${alumni.lastName}" />
-      <button type="button" class="btn btn-primary only-desk">Message</button>
+       <p class="alumni-card-role">${alumni.position} at ${alumni.company}</p>
+      <p class="alumni-card-location only-desk">${alumni.location}</p>
+      </div>
+      <img   src="https://ui-avatars.com/api/?name=${alumni.firstName}+${alumni.lastName}&background=ce0a86&color=fff&size=128&bold=true"
+  alt="${alumni.firstName} ${alumni.lastName}"
+  class="alumni-card-photo only-mobile"/>
+      <button type="button" class="btn btn-primary btn-networking only-desk">Message</button>
     </li>`,
     )
     .join("");
@@ -69,11 +73,11 @@ function renderSuggestions(alumnis: Alumni[]): void {
   list.innerHTML = alumnis
     ?.map(
       (alumni) => `
-    <li class="alumni-card">
-      <h3>${alumni.firstName} ${alumni.lastName}</h3>
-       <p>${alumni.position} at ${alumni.company}</p>
-      <p class="only-desk">${alumni.location}</p>
-       <button type="button" class="btn btn-primary">Connect</button>
+    <li class="alumni-card alumni-card-info">
+      <h3 class="alumni-card-name">${alumni.firstName} ${alumni.lastName}</h3>
+       <p class="alumni-card-role">${alumni.position} at ${alumni.company}</p>
+      <p class="alumni-card-location only-desk">${alumni.location}</p>
+       <button type="button" class="btn btn-primary btn-networking">Connect</button>
     </li>`,
     )
     .join("");

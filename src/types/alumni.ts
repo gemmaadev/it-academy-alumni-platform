@@ -6,5 +6,4 @@ export interface Alumni {
   company: string;
   classOf: number;
   location: string;
-  avatar: string;
 }

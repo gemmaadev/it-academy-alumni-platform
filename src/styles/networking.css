@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 2rem;
+  gap: 3.5rem;
 }
 
 .networking-toolbar {
@@ -40,35 +40,35 @@
 .alumni-card {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   border: 1px solid var(--color-input-bg);
   border-radius: var(--radius-md);
   padding: 1rem;
 }
 
-.alumni-card__info {
+.alumni-card-info {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.7rem;
   flex: 1;
-}
-
-.alumni-card__name {
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--color-black);
-}
-
-.alumni-card__role,
-.alumni-card__location {
-  font-size: 0.875rem;
   color: var(--color-text-navbar);
 }
 
-.alumni-card__photo {
-  width: 6rem;
-  height: 5rem;
+.alumni-card-name {
+  font-weight: 450;
+  font-size: 1.2rem;
+  color: var(--color-black);
+}
+
+.alumni-card-role,
+.alumni-card-location {
+  font-size: 1rem;
+}
+
+.alumni-card-photo {
+  width: 12rem;
+  height: 8rem;
   object-fit: cover;
   border-radius: var(--radius-sm);
   background: var(--color-input-bg);
@@ -142,10 +142,8 @@
 
   .alumni-card {
     flex-direction: column;
-  }
-
-  .alumni-card__photo {
-    display: none;
+    align-items: start;
+    border: none;
   }
 }
 
@@ -153,15 +151,21 @@
 .networking-extra {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .networking-extra h2 {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 450;
 }
 
 .networking-extra li {
-  font-size: 0.875rem;
-  padding: 0.25rem 0;
+  font-size: 1rem;
+  padding: 0.3rem 0;
+  color: var(--color-text-navbar);
+}
+
+.btn-networking {
+  width: auto;
+  padding-inline: 2.3rem;
 }
