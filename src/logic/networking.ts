@@ -2,6 +2,8 @@ import { setupHeader } from "./header";
 import { setupFooter } from "./footer";
 import { getAlumnis } from "../apiServices/networking/getAlumnis";
 import type { Alumni } from "../types/alumni";
+import type { Activity } from "../types/activity";
+import { getActivity } from "../apiServices/networking/getActivity";
 
 // ───────────── RENDER FUNCTIONS (defineix com mostrar les dades) ──────────────────────
 
@@ -29,8 +31,37 @@ function renderAlumni(alumnis: Alumni[]): void {
     .join("");
 }
 
-export function renderError(error: Error | unknown): void {
-  const errorElement = document.getElementById("alumni-error");
+function renderActivity(activities: Activity[]): void {
+  const list = document.getElementById("recent-activity-list");
+  if (!list) return;
+
+  if (activities.length === 0) {
+    document.getElementById("activity-empty")?.removeAttribute("hidden");
+    return;
+  }
+
+  list.innerHTML = activities
+    .map((activity) => {
+      // TODO: En producció el backend retornaria el text ja formatat
+      // Aquí ho construïm al frontend segons el type
+      let text = "";
+      if (activity.type === "follow") {
+        text = `${activity.actor} started following ${activity.target}`;
+      } else if (activity.type === "connection") {
+        text = `${activity.actor} and ${activity.target} connected`;
+      } else if (activity.type === "share") {
+        text = `${activity.actor} shared "${activity.content}"`;
+      }
+      return `<li class="activity-item">${text}</li>`;
+    })
+    .join("");
+}
+
+export function renderError(
+  error: Error | unknown,
+  elementId: string = "alumni-error",
+): void {
+  const errorElement = document.getElementById(elementId);
   if (!errorElement) return;
 
   errorElement.textContent = (error as Error).message;
@@ -50,7 +81,9 @@ const getAllAlumnisAndRender = async () => {
     // TODO: Treure aquest delay - només per provar el loading
     await new Promise((resolve) => setTimeout(resolve, 200));
 
-    const alumnis = await getAlumnis(renderError);
+    const alumnis = await getAlumnis((error) =>
+      renderError(error, "alumni-error"),
+    );
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // success
     renderAlumni(alumnis);
@@ -62,10 +95,38 @@ const getAllAlumnisAndRender = async () => {
   }
 };
 
+const getAllActivityAndRender = async () => {
+  const loadingEl = document.getElementById("activity-loading");
+  const section = document.querySelector(
+    '[aria-labelledby="recent-activity-heading"]',
+  );
+
+  loadingEl?.removeAttribute("hidden");
+  section?.setAttribute("aria-busy", "true"); // loading
+
+  try {
+    // TODO: Treure aquest delay - només per provar el loading
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    const activities = await getActivity((error) =>
+      renderError(error, "activity-error"),
+    );
+    loadingEl?.setAttribute("hidden", "");
+    section?.setAttribute("aria-busy", "false"); // success
+    renderActivity(activities);
+  } catch (error) {
+    loadingEl?.setAttribute("hidden", "");
+    section?.setAttribute("aria-busy", "false"); // error
+    console.error("Error carregant activitats:", error);
+    renderError(error, "activity-error");
+  }
+};
+
 // ───────────── PAGE SETUP (inicia tot el procés) ──────────────────────
 
 export async function setupNetworkingPage(): Promise<void> {
   setupHeader("networking");
   setupFooter("networking");
   await getAllAlumnisAndRender();
+  await getAllActivityAndRender();
 }
