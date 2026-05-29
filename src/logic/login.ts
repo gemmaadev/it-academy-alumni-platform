@@ -4,7 +4,7 @@ import { setupFooter } from "./footer";
 export function setupLoginPage() {
   setupHeader("login");
   setupFooter("login");
-  
+
   const form = document.querySelector(".login-form");
   if (form) {
     form.addEventListener("submit", (e) => {
