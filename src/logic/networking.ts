@@ -57,6 +57,28 @@ function renderActivity(activities: Activity[]): void {
     .join("");
 }
 
+function renderSuggestions(alumnis: Alumni[]): void {
+  const list = document.getElementById("suggestions-list");
+  if (!list) return;
+
+  if (alumnis.length === 0) {
+    document.getElementById("suggestions-empty")?.removeAttribute("hidden");
+    return;
+  }
+
+  list.innerHTML = alumnis
+    ?.map(
+      (alumni) => `
+    <li class="alumni-card">
+      <h3>${alumni.firstName} ${alumni.lastName}</h3>
+       <p>${alumni.position} at ${alumni.company}</p>
+      <p class="only-desk">${alumni.location}</p>
+       <button type="button" class="btn btn-primary">Connect</button>
+    </li>`,
+    )
+    .join("");
+}
+
 export function renderError(
   error: Error | unknown,
   elementId: string = "alumni-error",
@@ -122,6 +144,33 @@ const getAllActivityAndRender = async () => {
   }
 };
 
+const getAllSuggestionsAndRender = async () => {
+  const loadingEl = document.getElementById("suggestions-loading");
+  const section = document.querySelector(
+    '[aria-labelledby="suggestions-heading"]',
+  );
+
+  loadingEl?.removeAttribute("hidden");
+  section?.setAttribute("aria-busy", "true"); // loading
+
+  try {
+    // TODO: Treure aquest delay - només per provar el loading
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    const suggestions = await getAlumnis((error) =>
+      renderError(error, "suggestions-error"),
+    );
+    loadingEl?.setAttribute("hidden", "");
+    section?.setAttribute("aria-busy", "false"); // success
+    renderSuggestions(suggestions);
+  } catch (error) {
+    loadingEl?.setAttribute("hidden", "");
+    section?.setAttribute("aria-busy", "false"); // error
+    console.error("Error carregant suggerències:", error);
+    renderError(error, "suggestions-error");
+  }
+};
+
 // ───────────── PAGE SETUP (inicia tot el procés) ──────────────────────
 
 export async function setupNetworkingPage(): Promise<void> {
@@ -129,4 +178,5 @@ export async function setupNetworkingPage(): Promise<void> {
   setupFooter("networking");
   await getAllAlumnisAndRender();
   await getAllActivityAndRender();
+  await getAllSuggestionsAndRender();
 }
