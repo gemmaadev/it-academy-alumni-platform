@@ -14,20 +14,6 @@
   padding: 1rem;
 }
 
-.search-wrapper input {
-  width: auto;
-  flex: 1;
-  min-width: 0;
-}
-
-.search-wrapper:focus-within {
-  border-color: var(--color-primary);
-}
-
-.search-wrapper input:focus-visible {
-  outline: none;
-}
-
 .home-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;

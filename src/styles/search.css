@@ -7,3 +7,17 @@
   padding: 0.75rem 1rem;
   border: 2px solid var(--color-input-bg);
 }
+
+.search-wrapper input {
+  width: auto;
+  color: var(--color-black);
+  flex: 1;
+}
+
+.search-wrapper:focus-within {
+  border-color: var(--color-primary);
+}
+
+.search-wrapper input:focus-visible {
+  outline: none;
+}

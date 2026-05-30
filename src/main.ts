@@ -1,9 +1,9 @@
 import { initRouter } from "./router";
-import { setupLoginPage } from "./services/login";
-import { setupHomePage } from "./services/home";
-import { setupNetworkingPage } from "./services/networking";
-import { setupJobOpportunitiesPage } from "./services/job-opportunities";
-import { setupSplashPage } from "./services/splash-page";
+import { setupLoginPage } from "./logic/login";
+import { setupHomePage } from "./logic/home";
+import { setupNetworkingPage } from "./logic/networking";
+import { setupJobOpportunitiesPage } from "./logic/job-opportunities";
+import { setupSplashPage } from "./logic/splash-page";
 
 // Register the setups for each page
 // The router will automatically call them when you navigate

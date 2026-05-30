@@ -1,5 +1,5 @@
 import type { Route } from "./types/router.types";
-import { setupHeader } from "./services/header";
+import { setupHeader } from "./logic/header";
 
 const ROUTES: Route[] = [
   {
