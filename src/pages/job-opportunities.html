@@ -1,3 +1,80 @@
 <main class="job-opportunities-page">
-  <h1>Job Opportunities</h1>
+  <!-- Always visible -->
+  <div class="jobs-toolbar">
+    <form class="search-wrapper" role="search">
+      <label for="jobs-search" class="visually-hidden"
+        >Cerca ofertes de feina</label
+      >
+      <img src="/icon-search.svg" alt="" />
+      <input
+        type="search"
+        id="jobs-search"
+        placeholder="Search jobs..."
+        autocomplete="off"
+      />
+    </form>
+
+    <!-- filters: hidden on desk, visible on mobile -->
+    <div class="filters only-mobile" role="group" aria-label="Filtres de feina">
+      <div class="filter-wrapper">
+        <label for="industry-filter" class="visually-hidden">Indústria</label>
+        <img src="/icon-jobs-filter.svg" alt="" />
+        <span class="filter-label">Industry</span>
+        <select id="industry-filter" aria-label="Filtrar per indústria">
+          <option value="">All</option>
+          <option value="technology">Technology</option>
+          <option value="human-resources">Human Resources</option>
+          <option value="marketing">Marketing</option>
+          <option value="design">Design</option>
+          <option value="healthcare">Healthcare</option>
+        </select>
+      </div>
+
+      <div class="filter-wrapper">
+        <label for="experience-filter" class="visually-hidden"
+          >Nivell d'experiència</label
+        >
+        <img src="/icon-jobs-filter.svg" alt="" />
+        <span class="filter-label">Experience Level</span>
+        <select
+          id="experience-filter"
+          aria-label="Filtrar per nivell d'experiència"
+        >
+          <option value="">All</option>
+          <option value="junior">Junior</option>
+          <option value="mid">Mid</option>
+          <option value="senior">Senior</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS A: active search > appears, browse-view disappears -->
+  <section
+    class="search-results"
+    aria-label="Resultats de cerca"
+    aria-live="polite"
+    hidden
+  >
+    <ul id="search-results-list" class="jobs-list"></ul>
+    <p id="search-empty" class="empty-state" hidden>No s'han trobat ofertes.</p>
+  </section>
+
+  <!-- STATE B: normal navigation > disappears when search is active -->
+  <div class="browse-view">
+    <!-- grid: 1 col mobile (horizontal card + photo), 4 col desk (+ photo) -->
+    <section
+      aria-labelledby="jobs-heading"
+      aria-live="polite"
+      aria-busy="false"
+    >
+      <h2 id="jobs-heading" class="visually-hidden">Ofertes de feina</h2>
+      <ul id="jobs-grid" class="jobs-grid"></ul>
+      <p id="jobs-loading" class="loading-state" hidden>Carregant...</p>
+      <p id="jobs-error" class="error-state" hidden>Error carregant dades.</p>
+      <p id="jobs-empty" class="empty-state" hidden>
+        No s'han trobat ofertes de feina.
+      </p>
+    </section>
+  </div>
 </main>
