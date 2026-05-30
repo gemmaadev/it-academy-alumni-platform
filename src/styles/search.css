@@ -10,6 +10,7 @@
 
 .search-wrapper input {
   width: auto;
+  color: var(--color-black);
   flex: 1;
 }
 

@@ -2,17 +2,30 @@ import { setupHeader } from "./header";
 import { setupFooter } from "./footer";
 import { getAlumnis } from "../apiServices/networking/getAlumnis";
 import type { Alumni } from "../types/alumni";
-import type { Activity } from "../types/activity";
+import { ActivityType, type Activity } from "../types/activity";
 import { getActivity } from "../apiServices/networking/getActivity";
+import { renderError } from "./global";
 
 let allAlumnis: Alumni[] = [];
 
 // ───────────── RENDER FUNCTIONS (defineix com mostrar les dades) ──────────────────────
-function filterAlumnis(query: string): Alumni[] {
-  return allAlumnis.filter((alumni) =>
-    `${alumni.firstName} ${alumni.lastName} ${alumni.position} ${alumni.location}`
-      .toLowerCase()
-      .includes(query.toLowerCase()),
+export function filterAlumnis(query: string, alumnis: Alumni[]): Alumni[] {
+  const searchTerm = query.toLowerCase().trim();
+  if (!searchTerm) return alumnis;
+
+  return alumnis.filter(
+    ({ firstName, lastName, position, location, company, classOf }) => {
+      const fullName = `${firstName} ${lastName}`.toLowerCase();
+      return (
+        fullName.includes(searchTerm) ||
+        firstName.toLowerCase().includes(searchTerm) ||
+        lastName.toLowerCase().includes(searchTerm) ||
+        position.toLowerCase().includes(searchTerm) ||
+        location.toLowerCase().includes(searchTerm) ||
+        company.toLowerCase().includes(searchTerm) ||
+        classOf.toString().includes(searchTerm)
+      );
+    },
   );
 }
 
@@ -39,9 +52,9 @@ function renderAlumni(alumnis: Alumni[]): void {
        <p class="alumni-card-role">${alumni.position} at ${alumni.company}</p>
       <p class="alumni-card-location only-desk">${alumni.location}</p>
       </div>
-      <img src="https://ui-avatars.com/api/?name=${alumni.firstName}+${alumni.lastName}&background=ce0a86&color=fff&size=128&bold=true"
-  alt="${alumni.firstName} ${alumni.lastName}"
-  class="alumni-card-photo only-mobile"/>
+      <img src="https://ui-avatars.com/api/?name=${alumni.firstName}+${alumni.lastName}&background=ce0a86&color=fff&size=128&font-size=0.3&bold=true"
+        alt="${alumni.firstName} ${alumni.lastName}"
+        class="alumni-card-photo only-mobile"/>
       <button type="button" class="btn btn-primary btn-networking only-desk">Message</button>
     </li>`,
     )
@@ -62,12 +75,15 @@ function renderActivity(activities: Activity[]): void {
       // TODO: En producció el backend retornaria el text ja formatat
       // Aquí ho construïm al frontend segons el type
       let text = "";
-      if (activity.type === "follow") {
-        text = `${activity.actor} started following ${activity.target}`;
-      } else if (activity.type === "connection") {
-        text = `${activity.actor} and ${activity.target} connected`;
-      } else if (activity.type === "share") {
-        text = `${activity.actor} shared "${activity.content}"`;
+      switch (activity.type) {
+        case ActivityType.FOLLOW:
+          text = `${activity.actor} started following ${activity.target}`;
+          break;
+        case ActivityType.CONNECTION:
+          text = `${activity.actor} and ${activity.target} connected`;
+          break;
+        case ActivityType.SHARE:
+          text = `${activity.actor} shared "${activity.content}"`;
       }
       return `<li class="activity-item">${text}</li>`;
     })
@@ -96,30 +112,18 @@ function renderSuggestions(alumnis: Alumni[]): void {
     .join("");
 }
 
-export function renderError(
-  error: Error | unknown,
-  elementId: string = "alumni-error",
-): void {
-  const errorElement = document.getElementById(elementId);
-  if (!errorElement) return;
-
-  errorElement.textContent = (error as Error).message;
-  errorElement.removeAttribute("hidden");
-}
-
 function setupSearch(): void {
   const input = document.getElementById("alumni-search") as HTMLInputElement;
   if (!input) return;
 
   input.addEventListener("input", () => {
     const query = input.value;
-    const filteredAlumnis = filterAlumnis(query);
+    const filteredAlumnis = filterAlumnis(query, allAlumnis);
     renderAlumni(filteredAlumnis);
   });
 }
 
 // ───────────── DATA FETCHING (obté les dades i crida les render functions) ──────────────────────
-
 const getAllAlumnisAndRender = async () => {
   const loadingEl = document.getElementById("alumni-loading");
   const section = document.querySelector('[aria-labelledby="alumni-heading"]');
@@ -142,7 +146,7 @@ const getAllAlumnisAndRender = async () => {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
     console.error("Error carregant alumnes:", error);
-    renderError(error);
+    renderError(error, "alumni-error");
   }
 };
 
