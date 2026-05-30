@@ -15,11 +15,12 @@
     </form>
 
     <!-- filters: hidden on desk, visible on mobile -->
-    <div class="filters only-mobile" role="group" aria-label="Filtres de feina">
+    <div class="filters" role="group" aria-label="Filtres de feina">
       <div class="filter-wrapper">
-        <label for="industry-filter" class="visually-hidden">Indústria</label>
-        <img src="/icon-jobs-filter.svg" alt="" />
-        <span class="filter-label">Industry</span>
+        <div class="icon-and-label">
+          <img src="/icon-jobs-filter.svg" alt="" />
+          <label for="industry-filter">Industry</label>
+        </div>
         <select id="industry-filter" aria-label="Filtrar per indústria">
           <option value="">All</option>
           <option value="technology">Technology</option>
@@ -31,11 +32,10 @@
       </div>
 
       <div class="filter-wrapper">
-        <label for="experience-filter" class="visually-hidden"
-          >Nivell d'experiència</label
-        >
-        <img src="/icon-jobs-filter.svg" alt="" />
-        <span class="filter-label">Experience Level</span>
+        <div class="icon-and-label">
+          <img src="/icon-jobs-filter.svg" alt="" />
+          <label for="experience-filter">Experience Level</label>
+        </div>
         <select
           id="experience-filter"
           aria-label="Filtrar per nivell d'experiència"

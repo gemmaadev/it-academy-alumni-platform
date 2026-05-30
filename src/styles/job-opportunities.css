@@ -1,0 +1,150 @@
+/* MOBILE */
+
+.job-opportunities-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 2rem;
+  gap: 3.5rem;
+}
+
+.jobs-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.search-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.icon-and-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-wrapper img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.browse-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jobs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.jobs-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--color-input-bg);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.jobs-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+  color: var(--color-text-navbar);
+}
+
+.jobs-card-name {
+  font-weight: 450;
+  font-size: 1.2rem;
+  color: var(--color-black);
+}
+
+.jobs-card-role,
+.jobs-card-location {
+  font-size: 1rem;
+}
+
+.jobs-card-photo {
+  width: 12rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-input-bg);
+  flex-shrink: 0;
+}
+
+.btn-jobs {
+  width: auto;
+  padding-inline: 2.3rem;
+}
+
+/* --- States --- */
+.loading-state,
+.error-state,
+.empty-state {
+  font-size: 0.9rem;
+  color: var(--color-text-navbar);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.error-state {
+  color: var(--color-error);
+}
+
+/* MEDIA QUERIES > TABLET AND DESK */
+@media (width >= 768px) {
+  .job-opportunities-page {
+    padding: 4rem 4rem;
+  }
+
+  .jobs-toolbar {
+    justify-content: start;
+    align-items: start;
+  }
+
+  .search-wrapper {
+    max-width: 25rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+  }
+
+  .filters {
+    display: none;
+  }
+
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .jobs-card {
+    flex-direction: column;
+    align-items: start;
+    border: none;
+  }
+}
