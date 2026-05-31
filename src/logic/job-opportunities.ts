@@ -28,10 +28,10 @@ function renderJobs(jobs: Job[]): void {
        <p class="jobs-card-role only-mobile">${job.title} at ${job.company}</p>
         <p class="job-card-location only-mobile">${job.location} | Apply by ${job.applyBy}</p>
        <p class="only-desk">Posted ${job.postedDaysAgo} days ago</p>
+       <button type="button" class="btn btn-secondary btn-jobs">Apply Now</button>
         </div>
        <img src="/image-jobs.jpg"
          class="jobs-card-photo"/>
-       <button type="button" class="btn btn-secondary btn-jobs">Apply Now</button>
      </li>`,
     )
     .join("");

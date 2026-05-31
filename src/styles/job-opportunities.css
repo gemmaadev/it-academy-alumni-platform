@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 2rem;
-  gap: 3.5rem;
+  padding: 0 2rem 5rem 2rem;
+  gap: 1rem;
 }
 
 .jobs-toolbar {
@@ -55,7 +55,7 @@
 .jobs-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.5rem;
 }
 
 .jobs-card {
@@ -82,14 +82,9 @@
   color: var(--color-black);
 }
 
-.jobs-card-role,
-.jobs-card-location {
-  font-size: 1rem;
-}
-
 .jobs-card-photo {
-  width: 12rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
   border-radius: var(--radius-sm);
   background: var(--color-input-bg);
@@ -97,8 +92,7 @@
 }
 
 .btn-jobs {
-  width: auto;
-  padding-inline: 2.3rem;
+  width: fit-content;
 }
 
 /* --- States --- */
@@ -119,6 +113,7 @@
 @media (width >= 768px) {
   .job-opportunities-page {
     padding: 4rem 4rem;
+    gap: 2rem;
   }
 
   .jobs-toolbar {
@@ -138,13 +133,13 @@
 
   .jobs-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     gap: 1.5rem;
+    flex-wrap: wrap;
   }
 
-  .jobs-card {
-    flex-direction: column;
-    align-items: start;
-    border: none;
+  .jobs-card-photo {
+    width: 12rem;
+    height: 12rem;
   }
 }
