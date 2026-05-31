@@ -1,8 +1,11 @@
 import { setupHeader } from "./header";
 import { setupFooter } from "./footer";
 import { getJobs } from "../apiServices/jobs/getJobs";
+import { filterJobs } from "./filterJobs";
 import type { Job } from "../types/job";
 import { renderError } from "./global";
+
+let allJobs: Job[] = [];
 
 // ───────────── RENDER FUNCTIONS (defineix com mostrar les dades) ──────────────────────
 function renderJobs(jobs: Job[]): void {
@@ -37,6 +40,29 @@ function renderJobs(jobs: Job[]): void {
     .join("");
 }
 
+function setupFilters(): void {
+  const input = document.getElementById("jobs-search") as HTMLInputElement;
+  const industrySelect = document.getElementById(
+    "industry-filter",
+  ) as HTMLSelectElement;
+  const experienceSelect = document.getElementById(
+    "experience-filter",
+  ) as HTMLSelectElement;
+
+  const applyFilters = () => {
+    const filtered = filterJobs(allJobs, {
+      search: input?.value ?? "",
+      industry: industrySelect?.value ?? "",
+      experienceLevel: experienceSelect?.value ?? "",
+    });
+    renderJobs(filtered);
+  };
+
+  input?.addEventListener("input", applyFilters);
+  industrySelect?.addEventListener("change", applyFilters);
+  experienceSelect?.addEventListener("change", applyFilters);
+}
+
 // ───────────── DATA FETCHING (obté les dades i crida les render functions) ──────────────────────
 const getAllJobsAndRender = async () => {
   const loadingEl = document.getElementById("jobs-loading");
@@ -50,9 +76,10 @@ const getAllJobsAndRender = async () => {
     await new Promise((resolve) => setTimeout(resolve, 200));
 
     const jobs = await getJobs((error) => renderError(error, "jobs-error"));
-    renderJobs(jobs);
+    allJobs = jobs;
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // success
+    renderJobs(jobs);
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
@@ -66,5 +93,6 @@ const getAllJobsAndRender = async () => {
 export async function setupJobOpportunitiesPage(): Promise<void> {
   setupHeader("job-opportunities");
   setupFooter("job-opportunities");
+  setupFilters();
   await getAllJobsAndRender();
 }
