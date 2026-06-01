@@ -8,7 +8,6 @@ export const getAlumnis = async (
 ): Promise<Alumni[]> => {
   try {
     const response = await fetch(API_URL);
-    console.log(response);
     if (!response.ok) {
       throw new Error(`Error al carregar els alumnes`);
     }

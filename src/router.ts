@@ -119,7 +119,6 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     // Execute the page setup if it exists
     if (route.script && window.pageSetups && window.pageSetups[route.script]) {
       window.pageSetups[route.script]();
-      console.log(`Setup of ${route.script} executed`);
 
       // Update header based on current page
       setupHeader(route.script || "");

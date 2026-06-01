@@ -16,8 +16,6 @@ window.pageSetups = {
 };
 
 window.addEventListener("DOMContentLoaded", async () => {
-  console.log("App started - Router ready");
-
   const currentPath = window.location.pathname;
 
   // Load header (not on login or splash-page)

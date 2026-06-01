@@ -8,7 +8,6 @@ export const getJobs = async (
 ): Promise<Job[]> => {
   try {
     const response = await fetch(API_URL);
-    console.log(response);
     if (!response.ok) {
       throw new Error(`Error al carregar les ofertes de feina`);
     }
