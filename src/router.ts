@@ -1,5 +1,6 @@
 import type { Route } from "./types/router.types";
 import { setupHeader } from "./logic/header";
+import { setupBottomNav } from "./logic/bottom-nav";
 
 const ROUTES: Route[] = [
   {
@@ -122,6 +123,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
 
       // Update header based on current page
       setupHeader(route.script || "");
+      setupBottomNav(route.script || "");
     }
   } catch (error) {
     console.error("Error loading the page:", error);

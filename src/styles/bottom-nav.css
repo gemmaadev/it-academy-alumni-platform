@@ -21,8 +21,14 @@
   color: var(--color-text-navbar);
 }
 
- .item.active a {
+.item.active a {
   color: var(--color-primary);
+  font-weight: 800;
+}
+
+.item.active .icon {
+  filter: invert(18%) sepia(97%) saturate(5000%) hue-rotate(300deg)
+    brightness(85%);
 }
 
 .text {

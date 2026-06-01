@@ -139,7 +139,7 @@
 
 .header-mobile .avatar {
   height: 3rem;
-  width: 3.5rem;
+  width: 4rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -156,5 +156,9 @@
   .header-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
+  }
+
+  .logo-and-items-container {
+    gap: 0.8rem;
   }
 }
