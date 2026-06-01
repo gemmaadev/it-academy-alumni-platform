@@ -33,7 +33,7 @@ function renderJobs(jobs: Job[]): void {
        <p class="only-desk">Posted ${job.postedDaysAgo} days ago</p>
        <button type="button" class="btn btn-secondary btn-jobs">Apply Now</button>
         </div>
-       <img src="/image-jobs.jpg"
+       <img src="/img/image-jobs.jpg"
          class="jobs-card-photo"/>
      </li>`,
     )

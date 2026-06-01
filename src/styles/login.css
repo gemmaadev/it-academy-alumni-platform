@@ -126,7 +126,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("/login-bg.jpg");
+    background-image: url("/img/login-bg.jpg");
     background-size: cover;
     background-position: center;
     padding: 2rem;

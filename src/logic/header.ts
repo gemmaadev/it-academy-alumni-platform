@@ -34,10 +34,10 @@ export function setupHeader(page: string): void {
     logo.classList.toggle("logo-home", config.isHomePage);
     // Change logo src based on page
     if (config.isHomePage) {
-      logo.src = "/logo-xlumni.svg";
+      logo.src = "/logos/logo-xlumni.svg";
       logo.alt = "XLumni";
     } else {
-      logo.src = "/logo-alumni-connect.svg";
+      logo.src = "/logos/logo-alumni-connect.svg";
       logo.alt = "Alumni Connect";
     }
   }
