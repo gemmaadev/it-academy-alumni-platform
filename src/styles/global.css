@@ -78,6 +78,13 @@ fieldset {
   display: none;
 }
 
+/* Ensure hidden overrides only-mobile and only-desk on layout elements */
+#bottom-nav.hidden,
+#footer-pc.hidden,
+#header.hidden {
+  display: none !important;
+}
+
 .hidden {
   display: none !important;
 }

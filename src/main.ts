@@ -16,45 +16,34 @@ window.pageSetups = {
 };
 
 window.addEventListener("DOMContentLoaded", async () => {
-  const currentPath = window.location.pathname;
-
-  // Load header (not on login or splash-page)
-  if (currentPath !== "/login" && currentPath !== "/splash-page") {
-    const headerContainer = document.getElementById("header");
-    if (headerContainer) {
-      const response = await fetch("/src/components/header.html");
-      const html = await response.text();
-      headerContainer.innerHTML = html;
-    }
+  // Always load all components
+  const headerContainer = document.getElementById("header");
+  if (headerContainer) {
+    const response = await fetch("/src/components/header.html");
+    const html = await response.text();
+    headerContainer.innerHTML = html;
+  }
+  const bottomNavContainer = document.getElementById("bottom-nav");
+  if (bottomNavContainer) {
+    const response = await fetch("/src/components/bottom-nav.html");
+    const html = await response.text();
+    bottomNavContainer.innerHTML = html;
   }
 
-  // Load bottom nav mobile and footer (not on login or splash-page)
-  if (currentPath !== "/login" && currentPath !== "/splash-page") {
-    const bottomNavContainer = document.getElementById("bottom-nav");
-    if (bottomNavContainer) {
-      const response = await fetch("/src/components/bottom-nav.html");
-      const html = await response.text();
-      bottomNavContainer.innerHTML = html;
-    }
-
-    // Load footer pc
-    const footerContainer = document.getElementById("footer-pc");
-    if (footerContainer) {
-      const response = await fetch("/src/components/footer.html");
-      const html = await response.text();
-      footerContainer.innerHTML = html;
-    }
+  const footerContainer = document.getElementById("footer-pc");
+  if (footerContainer) {
+    const response = await fetch("/src/components/footer.html");
+    const html = await response.text();
+    footerContainer.innerHTML = html;
   }
 
   const isMobile = window.innerWidth < 768;
 
-  // Redirect based on device type
   if (window.location.pathname === "/") {
     window.location.replace(isMobile ? "/splash-page" : "/home");
     return;
   }
 
-  // Redirect desktop users away from splash page
   if (!isMobile && window.location.pathname === "/splash-page") {
     window.location.replace("/home");
     return;
