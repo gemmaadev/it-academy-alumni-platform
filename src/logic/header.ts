@@ -6,8 +6,8 @@ interface PageHeaderConfig {
 const PAGE_CONFIGS: { [key: string]: PageHeaderConfig } = {
   home: { title: "Home", isHomePage: true },
   networking: { title: "Networking", isHomePage: false },
-  "job-opportunities": { title: "Job Portal", isHomePage: false },
-  events: { title: "Eventos", isHomePage: false },
+  "job-opportunities": { title: "Job portal", isHomePage: false },
+  events: { title: "Events", isHomePage: false },
   login: { title: "Login", isHomePage: false },
   "splash-page": { title: "", isHomePage: false },
 };

@@ -142,7 +142,7 @@ const getAllAlumnisAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant alumnes:", error);
+    console.error("Error loading alumni:", error);
     renderError(error, "alumni-error");
   }
 };
@@ -166,7 +166,7 @@ const getAllActivityAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant activitats:", error);
+    console.error("Error loading activities:", error);
     renderError(error, "activity-error");
   }
 };
@@ -190,7 +190,7 @@ const getAllSuggestionsAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant suggerències:", error);
+    console.error("Error loading suggestions:", error);
     renderError(error, "suggestions-error");
   }
 };

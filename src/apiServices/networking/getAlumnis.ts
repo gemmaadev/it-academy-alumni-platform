@@ -9,7 +9,7 @@ export const getAlumnis = async (
   try {
     const response = await fetch(API_URL);
     if (!response.ok) {
-      throw new Error(`Error al carregar els alumnes`);
+      throw new Error(`Error loading alumni`);
     }
 
     const alumni: Alumni[] = await response.json();

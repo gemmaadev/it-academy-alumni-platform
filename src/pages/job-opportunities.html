@@ -3,7 +3,7 @@
   <div class="jobs-toolbar">
     <form class="search-wrapper" role="search">
       <label for="jobs-search" class="visually-hidden"
-        >Cerca ofertes de feina</label
+        >Search job opportunities</label
       >
       <img src="/icons/icon-search.svg" alt="" />
       <input
@@ -15,13 +15,13 @@
     </form>
 
     <!-- filters: hidden on desk, visible on mobile -->
-    <div class="filters" role="group" aria-label="Filtres de feina">
+    <div class="filters" role="group" aria-label="Job filters">
       <div class="filter-wrapper">
         <div class="icon-and-label">
           <img src="/icons/icon-jobs-filter.svg" alt="" />
           <label for="industry-filter">Industry</label>
         </div>
-        <select id="industry-filter" aria-label="Filtrar per indústria">
+        <select id="industry-filter" aria-label="Filter by industry">
           <option value="">All</option>
           <option value="technology">Technology</option>
           <option value="human resources">Human Resources</option>
@@ -38,7 +38,7 @@
         </div>
         <select
           id="experience-filter"
-          aria-label="Filtrar per nivell d'experiència"
+          aria-label="Filter by experience level"
         >
           <option value="">All</option>
           <option value="junior">Junior</option>
@@ -52,12 +52,12 @@
   <!-- STATUS A: active search > appears, browse-view disappears -->
   <section
     class="search-results"
-    aria-label="Resultats de cerca"
+    aria-label="Search results"
     aria-live="polite"
     hidden
   >
     <ul id="search-results-list" class="jobs-list"></ul>
-    <p id="search-empty" class="empty-state" hidden>No s'han trobat ofertes.</p>
+    <p id="search-empty" class="empty-state" hidden>No jobs found.</p>
   </section>
 
   <!-- STATE B: normal navigation > disappears when search is active -->
@@ -68,12 +68,12 @@
       aria-live="polite"
       aria-busy="false"
     >
-      <h2 id="jobs-heading" class="visually-hidden">Ofertes de feina</h2>
+      <h2 id="jobs-heading" class="visually-hidden">Job opportunities</h2>
       <ul id="jobs-grid" class="jobs-grid"></ul>
-      <p id="jobs-loading" class="loading-state" hidden>Carregant...</p>
-      <p id="jobs-error" class="error-state" hidden>Error carregant dades.</p>
+      <p id="jobs-loading" class="loading-state" hidden>Loading...</p>
+      <p id="jobs-error" class="error-state" hidden>Error loading data.</p>
       <p id="jobs-empty" class="empty-state" hidden>
-        No s'han trobat ofertes de feina.
+        No job opportunities found.
       </p>
     </section>
   </div>

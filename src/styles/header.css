@@ -146,7 +146,7 @@
 
 @media (width < 1024px) {
   .header-menu {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .header-nav {

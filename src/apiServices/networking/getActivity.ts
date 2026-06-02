@@ -13,7 +13,7 @@ export const getActivity = async (
   try {
     const response = await fetch(API_URL);
     if (!response.ok) {
-      throw new Error(`Error al carregar l'activitat recent`);
+      throw new Error(`Error loading recent activity`);
     }
 
     const activity: Activity[] = await response.json();

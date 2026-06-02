@@ -80,12 +80,12 @@ const getAllJobsAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant feines:", error);
+    console.error("Error loading jobs:", error);
     renderError(error, "jobs-error");
   }
 };
 
-// ───────────── PAGE SETUP (inicia tot el procés) ──────────────────────
+// ───────────── PAGE SETUP (Start the process) ──────────────────────
 export async function setupJobOpportunitiesPage(): Promise<void> {
   setupHeader("job-opportunities");
   setupFooter("job-opportunities");
