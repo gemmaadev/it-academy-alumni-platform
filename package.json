@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.7",
     "typescript": "~6.0.2",
     "vite": "^8.0.12",
     "vitest": "^4.1.7"

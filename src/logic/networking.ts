@@ -8,7 +8,7 @@ import { renderError } from "./global";
 
 let allAlumnis: Alumni[] = [];
 
-// ───────────── RENDER FUNCTIONS (defineix com mostrar les dades) ──────────────────────
+// ───────────── RENDER FUNCTIONS (defines how to display data) ──────────────────────
 export function filterAlumnis(query: string, alumnis: Alumni[]): Alumni[] {
   const searchTerm = query.toLowerCase().trim();
   if (!searchTerm) return alumnis;
@@ -33,7 +33,7 @@ function renderAlumni(alumnis: Alumni[]): void {
   const grid = document.getElementById("alumni-grid");
   if (!grid) return;
 
-  // Amaga l'empty state sempre que es renderitza
+  // Hide the empty state whenever it renders
   document.getElementById("alumni-empty")?.setAttribute("hidden", "");
 
   if (alumnis.length === 0) {
@@ -72,8 +72,8 @@ function renderActivity(activities: Activity[]): void {
 
   list.innerHTML = activities
     .map((activity) => {
-      // TODO: En producció el backend retornaria el text ja formatat
-      // Aquí ho construïm al frontend segons el type
+      /*In production the backend would return the already formatted text
+      Here we build it in the frontend according to the type*/
       let text = "";
       switch (activity.type) {
         case ActivityType.FOLLOW:
@@ -123,7 +123,7 @@ function setupSearch(): void {
   });
 }
 
-// ───────────── DATA FETCHING (obté les dades i crida les render functions) ──────────────────────
+// ───────────── DATA FETCHING (gets the data and calls the render functions) ──────────────────────
 const getAllAlumnisAndRender = async () => {
   const loadingEl = document.getElementById("alumni-loading");
   const section = document.querySelector('[aria-labelledby="alumni-heading"]');
@@ -132,9 +132,6 @@ const getAllAlumnisAndRender = async () => {
   section?.setAttribute("aria-busy", "true"); // loading
 
   try {
-    // TODO: Treure aquest delay - només per provar el loading
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
     const alumnis = await getAlumnis((error) =>
       renderError(error, "alumni-error"),
     );
@@ -145,7 +142,7 @@ const getAllAlumnisAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant alumnes:", error);
+    console.error("Error loading alumni:", error);
     renderError(error, "alumni-error");
   }
 };
@@ -160,9 +157,6 @@ const getAllActivityAndRender = async () => {
   section?.setAttribute("aria-busy", "true"); // loading
 
   try {
-    // TODO: Treure aquest delay - només per provar el loading
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
     const activities = await getActivity((error) =>
       renderError(error, "activity-error"),
     );
@@ -172,7 +166,7 @@ const getAllActivityAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant activitats:", error);
+    console.error("Error loading activities:", error);
     renderError(error, "activity-error");
   }
 };
@@ -187,9 +181,6 @@ const getAllSuggestionsAndRender = async () => {
   section?.setAttribute("aria-busy", "true"); // loading
 
   try {
-    // TODO: Treure aquest delay - només per provar el loading
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
     const suggestions = await getAlumnis((error) =>
       renderError(error, "suggestions-error"),
     );
@@ -199,12 +190,12 @@ const getAllSuggestionsAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant suggerències:", error);
+    console.error("Error loading suggestions:", error);
     renderError(error, "suggestions-error");
   }
 };
 
-// ───────────── PAGE SETUP (inicia tot el procés) ──────────────────────
+// ───────────── PAGE SETUP (starts the whole process) ──────────────────────
 
 export async function setupNetworkingPage(): Promise<void> {
   setupHeader("networking");

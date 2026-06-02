@@ -7,12 +7,12 @@ import { renderError } from "./global";
 
 let allJobs: Job[] = [];
 
-// ───────────── RENDER FUNCTIONS (defineix com mostrar les dades) ──────────────────────
+// ───────────── RENDER FUNCTIONS (defines how to display data) ──────────────────────
 function renderJobs(jobs: Job[]): void {
   const grid = document.getElementById("jobs-grid");
   if (!grid) return;
 
-  // Amaga l'empty state sempre que es renderitza
+  // Hide the empty state whenever rendering occurs
   document.getElementById("jobs-empty")?.setAttribute("hidden", "");
 
   if (jobs.length === 0) {
@@ -33,7 +33,7 @@ function renderJobs(jobs: Job[]): void {
        <p class="only-desk">Posted ${job.postedDaysAgo} days ago</p>
        <button type="button" class="btn btn-secondary btn-jobs">Apply Now</button>
         </div>
-       <img src="/image-jobs.jpg"
+       <img src="/img/image-jobs.jpg"
          class="jobs-card-photo"/>
      </li>`,
     )
@@ -63,7 +63,7 @@ function setupFilters(): void {
   experienceSelect?.addEventListener("change", applyFilters);
 }
 
-// ───────────── DATA FETCHING (obté les dades i crida les render functions) ──────────────────────
+// ───────────── DATA FETCHING (gets the data and calls the render functions) ──────────────────────
 const getAllJobsAndRender = async () => {
   const loadingEl = document.getElementById("jobs-loading");
   const section = document.querySelector('[aria-labelledby="jobs-heading"]');
@@ -72,9 +72,6 @@ const getAllJobsAndRender = async () => {
   section?.setAttribute("aria-busy", "true"); // loading
 
   try {
-    // TODO: Treure aquest delay - només per provar el loading
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
     const jobs = await getJobs((error) => renderError(error, "jobs-error"));
     allJobs = jobs;
     loadingEl?.setAttribute("hidden", "");
@@ -83,13 +80,12 @@ const getAllJobsAndRender = async () => {
   } catch (error) {
     loadingEl?.setAttribute("hidden", "");
     section?.setAttribute("aria-busy", "false"); // error
-    console.error("Error carregant feines:", error);
+    console.error("Error loading jobs:", error);
     renderError(error, "jobs-error");
   }
 };
 
-// ───────────── PAGE SETUP (inicia tot el procés) ──────────────────────
-
+// ───────────── PAGE SETUP (Start the process) ──────────────────────
 export async function setupJobOpportunitiesPage(): Promise<void> {
   setupHeader("job-opportunities");
   setupFooter("job-opportunities");

@@ -92,7 +92,7 @@
   color: var(--color-white);
   width: auto;
   appearance: none;
-  background-image: url("/icon-chevron-down.svg");
+  background-image: url("/icons/icon-chevron-down.svg");
   background-repeat: no-repeat;
   background-position: right 0.625rem center;
 }

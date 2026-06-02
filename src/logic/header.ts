@@ -6,8 +6,8 @@ interface PageHeaderConfig {
 const PAGE_CONFIGS: { [key: string]: PageHeaderConfig } = {
   home: { title: "Home", isHomePage: true },
   networking: { title: "Networking", isHomePage: false },
-  "job-opportunities": { title: "Job Portal", isHomePage: false },
-  events: { title: "Eventos", isHomePage: false },
+  "job-opportunities": { title: "Job portal", isHomePage: false },
+  events: { title: "Events", isHomePage: false },
   login: { title: "Login", isHomePage: false },
   "splash-page": { title: "", isHomePage: false },
 };
@@ -34,10 +34,10 @@ export function setupHeader(page: string): void {
     logo.classList.toggle("logo-home", config.isHomePage);
     // Change logo src based on page
     if (config.isHomePage) {
-      logo.src = "/logo-xlumni.svg";
+      logo.src = "/logos/logo-xlumni.svg";
       logo.alt = "XLumni";
     } else {
-      logo.src = "/logo-alumni-connect.svg";
+      logo.src = "/logos/logo-alumni-connect.svg";
       logo.alt = "Alumni Connect";
     }
   }

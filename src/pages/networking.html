@@ -3,8 +3,8 @@
   <div class="networking-toolbar">
     <!-- search inline, do not navigate -->
     <form class="search-wrapper" role="search">
-      <label for="alumni-search" class="visually-hidden">Cerca alumnes</label>
-      <img src="/icon-search.svg" alt="" />
+      <label for="alumni-search" class="visually-hidden">Search alumni</label>
+      <img src="/icons/icon-search.svg" alt="" />
       <input
         type="search"
         id="alumni-search"
@@ -14,7 +14,7 @@
     </form>
 
     <!-- filters: hidden on mobile, visible on desktop -->
-    <div class="filters" role="group" aria-label="Filtres de visualització">
+    <div class="filters" role="group" aria-label="Display filters">
       <span class="filters-label" aria-hidden="true">Filters:</span>
       <button
         type="button"
@@ -46,12 +46,12 @@
   <!-- STATUS A: active search > appears, browse-view disappears -->
   <section
     class="search-results"
-    aria-label="Resultats de cerca"
+    aria-label="Search results"
     aria-live="polite"
     hidden
   >
     <ul id="search-results-list" class="alumni-list"></ul>
-    <p id="search-empty" class="empty-state" hidden>No s'han trobat alumnes.</p>
+    <p id="search-empty" class="empty-state" hidden>No alumni found.</p>
   </section>
 
   <!-- STATE B: normal navigation > disappears when search is active -->
@@ -62,12 +62,12 @@
       aria-live="polite"
       aria-busy="false"
     >
-      <h2 id="alumni-heading" class="visually-hidden">Alumnes</h2>
+      <h2 id="alumni-heading" class="visually-hidden">Alumni</h2>
       <ul id="alumni-grid" class="alumni-grid"></ul>
-      <p id="alumni-loading" class="loading-state" hidden>Carregant...</p>
-      <p id="alumni-error" class="error-state" hidden>Error carregant dades.</p>
+      <p id="alumni-loading" class="loading-state" hidden>Loading...</p>
+      <p id="alumni-error" class="error-state" hidden>Error loading data.</p>
       <p id="alumni-empty" class="empty-state" hidden>
-        No s'han trobat alumnes.
+        No alumni found.
       </p>
     </section>
 
@@ -76,12 +76,12 @@
       <section aria-labelledby="recent-activity-heading">
         <h2 id="recent-activity-heading">Recent Activity</h2>
         <ul id="recent-activity-list"></ul>
-        <p id="activity-loading" class="loading-state" hidden>Carregant...</p>
+        <p id="activity-loading" class="loading-state" hidden>Loading...</p>
         <p id="activity-error" class="error-state" hidden>
-          Error carregant activitat.
+          Error loading activity.
         </p>
         <p id="activity-empty" class="empty-state" hidden>
-          No hi ha activitat recent.
+          No recent activity.
         </p>
       </section>
 
@@ -89,13 +89,13 @@
         <h2 id="suggestions-heading">Suggestions for You</h2>
         <ul id="suggestions-list"></ul>
         <p id="suggestions-loading" class="loading-state" hidden>
-          Carregant...
+          Loading...
         </p>
         <p id="suggestions-error" class="error-state" hidden>
-          Error carregant suggerències.
+          Error loading suggestions.
         </p>
         <p id="suggestions-empty" class="empty-state" hidden>
-          No hi ha suggerències.
+          No suggestions available.
         </p>
       </section>
     </div>

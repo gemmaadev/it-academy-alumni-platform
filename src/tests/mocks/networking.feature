@@ -26,7 +26,7 @@ Feature: Alumni Search
 
   Scenario: No results found
     When I type "zzzzz" in the search field
-    Then I see the message "No s'han trobat alumnes"
+    Then I see the message "No alumni found"
     And the alumni grid is empty
 
   Scenario: Clear search

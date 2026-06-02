@@ -54,4 +54,25 @@ describe("filterAlumnis - Alumni Search", () => {
     const result = filterAlumnis("", mockAlumni);
     expect(result).toHaveLength(mockAlumni.length);
   });
+
+  // Scenario: Search by company
+  it("should return alumni whose company contains the query", () => {
+    const result = filterAlumnis("TechSolutions", mockAlumni);
+    expect(result).toHaveLength(1);
+    expect(result[0].company).toBe("TechSolutions");
+  });
+
+  // Scenario: Search by class year
+  it("should return alumni by graduation year", () => {
+    const result = filterAlumnis("2010", mockAlumni);
+    expect(result).toHaveLength(1);
+    expect(result[0].classOf).toBe(2010);
+  });
+
+  // Scenario: Case insensitive search
+  it("should be case insensitive", () => {
+    const result = filterAlumnis("JOHN", mockAlumni);
+    expect(result.length).toBeGreaterThan(0);
+    expect(result[0].firstName).toBe("John");
+  });
 });
