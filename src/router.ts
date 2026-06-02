@@ -1,6 +1,7 @@
 import type { Route } from "./types/router.types";
 import { setupHeader } from "./logic/header";
 import { setupBottomNav } from "./logic/bottom-nav";
+import { setupFooter } from "./logic/footer";
 
 const ROUTES: Route[] = [
   {
@@ -119,9 +120,8 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     // Execute the page setup if it exists
     if (route.script && window.pageSetups && window.pageSetups[route.script]) {
       window.pageSetups[route.script]();
-
-      // Update header based on current page
       setupHeader(route.script || "");
+      setupFooter(route.script || "");
       setupBottomNav(route.script || "");
     }
   } catch (error) {
