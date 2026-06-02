@@ -96,6 +96,9 @@ fieldset {
   .only-desk {
     display: flex !important;
   }
+  .hidden {
+    display: none !important;
+  }
 }
 
 #app {
