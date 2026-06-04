@@ -16,25 +16,33 @@ window.pageSetups = {
 };
 
 window.addEventListener("DOMContentLoaded", async () => {
-  // Always load all components
+  // Hide components while loading
   const headerContainer = document.getElementById("header");
-  if (headerContainer) {
-    const response = await fetch("/src/components/header.html");
-    const html = await response.text();
-    headerContainer.innerHTML = html;
-  }
   const bottomNavContainer = document.getElementById("bottom-nav");
-  if (bottomNavContainer) {
-    const response = await fetch("/src/components/bottom-nav.html");
-    const html = await response.text();
-    bottomNavContainer.innerHTML = html;
-  }
-
   const footerContainer = document.getElementById("footer-pc");
+
+  if (headerContainer) headerContainer.style.visibility = "hidden";
+  if (bottomNavContainer) bottomNavContainer.style.visibility = "hidden";
+  if (footerContainer) footerContainer.style.visibility = "hidden";
+
+  // Load all components in parallel
+  const [headerHtml, bottomNavHtml, footerHtml] = await Promise.all([
+    fetch("/src/components/header.html").then((r) => r.text()),
+    fetch("/src/components/bottom-nav.html").then((r) => r.text()),
+    fetch("/src/components/footer.html").then((r) => r.text()),
+  ]);
+
+  if (headerContainer) {
+    headerContainer.innerHTML = headerHtml;
+    headerContainer.style.visibility = "visible";
+  }
+  if (bottomNavContainer) {
+    bottomNavContainer.innerHTML = bottomNavHtml;
+    bottomNavContainer.style.visibility = "visible";
+  }
   if (footerContainer) {
-    const response = await fetch("/src/components/footer.html");
-    const html = await response.text();
-    footerContainer.innerHTML = html;
+    footerContainer.innerHTML = footerHtml;
+    footerContainer.style.visibility = "visible";
   }
 
   const isMobile = window.innerWidth < 768;
