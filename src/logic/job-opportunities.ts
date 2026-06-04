@@ -1,0 +1,94 @@
+import { setupHeader } from "./header";
+import { setupFooter } from "./footer";
+import { getJobs } from "../apiServices/jobs/getJobs";
+import { filterJobs } from "./filterJobs";
+import type { Job } from "../types/job";
+import { renderError } from "./global";
+
+let allJobs: Job[] = [];
+
+// ───────────── RENDER FUNCTIONS (defines how to display data) ──────────────────────
+function renderJobs(jobs: Job[]): void {
+  const grid = document.getElementById("jobs-grid");
+  if (!grid) return;
+
+  // Hide the empty state whenever rendering occurs
+  document.getElementById("jobs-empty")?.setAttribute("hidden", "");
+
+  if (jobs.length === 0) {
+    document.getElementById("jobs-empty")?.removeAttribute("hidden");
+    grid.innerHTML = "";
+    return;
+  }
+
+  grid.innerHTML = jobs
+    ?.map(
+      (job) => `
+     <li class="jobs-card">
+     <div class="jobs-card-info">
+       <h3 class="jobs-card-name">${job.title}</h3>
+       <p class="job-card-type only-desk">${job.type}</p>
+       <p class="jobs-card-role only-mobile">${job.title} at ${job.company}</p>
+        <p class="job-card-location only-mobile">${job.location} | Apply by ${job.applyBy}</p>
+       <p class="only-desk">Posted ${job.postedDaysAgo} days ago</p>
+       <button type="button" class="btn btn-secondary btn-jobs">Apply Now</button>
+        </div>
+       <img src="/img/image-jobs.jpg"
+         class="jobs-card-photo"/>
+     </li>`,
+    )
+    .join("");
+}
+
+function setupFilters(): void {
+  const input = document.getElementById("jobs-search") as HTMLInputElement;
+  const industrySelect = document.getElementById(
+    "industry-filter",
+  ) as HTMLSelectElement;
+  const experienceSelect = document.getElementById(
+    "experience-filter",
+  ) as HTMLSelectElement;
+
+  const applyFilters = () => {
+    const filtered = filterJobs(allJobs, {
+      search: input?.value ?? "",
+      industry: industrySelect?.value ?? "",
+      experienceLevel: experienceSelect?.value ?? "",
+    });
+    renderJobs(filtered);
+  };
+
+  input?.addEventListener("input", applyFilters);
+  industrySelect?.addEventListener("change", applyFilters);
+  experienceSelect?.addEventListener("change", applyFilters);
+}
+
+// ───────────── DATA FETCHING (gets the data and calls the render functions) ──────────────────────
+const getAllJobsAndRender = async () => {
+  const loadingEl = document.getElementById("jobs-loading");
+  const section = document.querySelector('[aria-labelledby="jobs-heading"]');
+
+  loadingEl?.removeAttribute("hidden");
+  section?.setAttribute("aria-busy", "true"); // loading
+
+  try {
+    const jobs = await getJobs((error) => renderError(error, "jobs-error"));
+    allJobs = jobs;
+    loadingEl?.setAttribute("hidden", "");
+    section?.setAttribute("aria-busy", "false"); // success
+    renderJobs(jobs);
+  } catch (error) {
+    loadingEl?.setAttribute("hidden", "");
+    section?.setAttribute("aria-busy", "false"); // error
+    console.error("Error loading jobs:", error);
+    renderError(error, "jobs-error");
+  }
+};
+
+// ───────────── PAGE SETUP (Start the process) ──────────────────────
+export async function setupJobOpportunitiesPage(): Promise<void> {
+  setupHeader("job-opportunities");
+  setupFooter("job-opportunities");
+  setupFilters();
+  await getAllJobsAndRender();
+}
