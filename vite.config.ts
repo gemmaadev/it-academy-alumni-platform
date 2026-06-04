@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [
     viteStaticCopy({
       targets: [
-        { src: "src/pages/*", dest: "src/pages" },
-        { src: "src/components/*", dest: "src/components" },
-        { src: "src/styles/*", dest: "src/styles" },
+        { src: "src/pages", dest: "" },
+        { src: "src/components", dest: "" },
+        { src: "src/styles", dest: "" },
       ],
     }),
   ],
