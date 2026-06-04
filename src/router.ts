@@ -96,6 +96,9 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
   }
 
   try {
+    // Hide app while transitioning
+    appContainer.style.visibility = "hidden";
+
     // Clean up previous page-specific styles
     cleanupPreviousStyles();
 
@@ -105,6 +108,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     const response = await fetch(filePath);
 
     if (!response.ok) {
+      appContainer.style.visibility = "visible";
       appContainer.innerHTML = `
         <main>
           <h2>Error 404</h2>
@@ -121,6 +125,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     const content = bodyMatch ? bodyMatch[1] : html;
 
     appContainer.innerHTML = content;
+    appContainer.style.visibility = "visible";
 
     // Execute the page setup if it exists
     if (route.script && window.pageSetups && window.pageSetups[route.script]) {
@@ -130,7 +135,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
       setupBottomNav(route.script || "");
     }
   } catch (error) {
-    console.error("Error loading the page:", error);
+    appContainer.style.visibility = "visible";
     appContainer.innerHTML = `
       <main>
         <h2>Error loading</h2>
