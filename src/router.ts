@@ -64,20 +64,25 @@ function cleanupPreviousStyles(): void {
 }
 
 // Load page-specific CSS
-function loadPageStyles(cssFiles?: string[]): void {
-  if (!cssFiles || cssFiles.length === 0) return;
+function loadPageStyles(cssFiles?: string[]): Promise<void[]> {
+  if (!cssFiles || cssFiles.length === 0) return Promise.resolve([]);
 
-  cssFiles.forEach((cssFile) => {
-    // Do not load if it already exists
-    const exists = document.querySelector(`link[href="${cssFile}"]`);
-    if (exists) return;
+  const promises = cssFiles.map((cssFile) => {
+    return new Promise<void>((resolve) => {
+      const exists = document.querySelector(`link[href="${cssFile}"]`);
+      if (exists) return resolve();
 
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = cssFile;
-    link.setAttribute("data-page-style", "true"); // Mark for cleanup
-    document.head.appendChild(link);
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = cssFile;
+      link.setAttribute("data-page-style", "true");
+      link.onload = () => resolve();
+      link.onerror = () => resolve();
+      document.head.appendChild(link);
+    });
   });
+
+  return Promise.all(promises);
 }
 
 // Load HTML file and display it in the app
@@ -95,7 +100,7 @@ async function loadPage(filePath: string, route: Route): Promise<void> {
     cleanupPreviousStyles();
 
     // Load new styles
-    loadPageStyles(route.css);
+    await loadPageStyles(route.css);
 
     const response = await fetch(filePath);
 
