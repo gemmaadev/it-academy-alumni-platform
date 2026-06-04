@@ -1,2 +1,4 @@
-/src/*  /src/:splat  200
-/*      /index.html  200
+/src/pages/*       /src/pages/:splat      200
+/src/components/*  /src/components/:splat 200
+/src/styles/*      /src/styles/:splat     200
+/*                 /index.html            200
