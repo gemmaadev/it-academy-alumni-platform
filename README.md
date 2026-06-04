@@ -7,7 +7,7 @@
 
 Connect with fellow graduates, discover opportunities and grow your professional network.
 
-[🚀 Live Demo](https://alumni-platform-it-academy.netlify.app)
+[🚀 Live Demo](https://it-alumni-platform.netlify.app/)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
@@ -61,7 +61,7 @@ Connect with fellow graduates, discover opportunities and grow your professional
 | Mock API        | [My JSON Server](https://my-json-server.typicode.com/) |
 | Testing         | [Vitest](https://vitest.dev/)                          |
 | Version Control | Git + GitHub (Git Flow)                                |
-| Deployment      | Netlify / Vercel                                       |
+| Deployment      | Netlify                                                |
 
 ---
 
